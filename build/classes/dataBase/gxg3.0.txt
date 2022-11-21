@@ -1,0 +1,55 @@
+PROJETO:
+
+carregar mops e hps
+
+CONCERTAR:
+--LABELS
+novos valores
+--OUTROS
+concertar as jFrames que nao param a execucao da pai:
+*ViewEditarCorpo_jDialog, *ViewEditarStun,
+*ViewScanValor, *ViewStun;
+inverter jogadores deve desmarcar as checkbox
+
+QUADRO:
+putHab tem que aumentar qtd de extensao
+testaValor negativo de MOP em:
+* checkBoxGastouTen, * turnos;
+talvez retirar shu e auraBonus
+nao impedir, mas mostrar um aviso nos controles abaixo:
+controlar os valores de entrada. ex.: ryu < 0 e ryu > 100
+e controlar qtdAtaques com o ryu (nao pode exceder 100)
+------
+depois devemos copiar o resultado para o map per, usando
+uma sobreposicao do setter -> [isso deve ser, possivel-
+mente, a ultima ação do CalcularAtaque];
+
+futuro
+demais funcoes
+desfazer
+tirar o null das comboBoxAtaque
+trocar as jForm para jDialog e usar this.setmMdal(true)
+colocar barra de hp negativo
+colocar tela de persoagens de atacante com jProgressBars
+colocar imagens dos personagens
+selecionar toda a jTextField com o mouseClicked
+mostrar comboBoxs de ataque e defesa com enter ou espaco
+
+funcao que reconhece hp negativo e pede teste de con
+organizar getters and setters
+
+pop = 1 + ref / 10
+nen = (aop + bonus) * pop
+bonus = 0;
+nen = aop * pop
+
+y = nen * ryu / corpo
+y = (nen / corpo) * ryu
+
+
+outros programas:
+prog em java que calcula as batalhas do medieval
+fazer uma tela pro ryu, mostrando várias informacoes, etc
+algoritmo em c que mostra o tempo de vida em horas
+
+

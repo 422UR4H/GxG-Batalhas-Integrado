@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import view.habilidades.ViewPrincipalHabilidades;
 import view.trainer.ViewPrincipalTrainer;
+import algoritmos.batalhas.AlgoritmoPrincipal;
 
 /**
  *
@@ -2029,7 +2030,7 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
     private void calcular() {
         // controlando nomes repetidos
         String nomePer = jTextFieldNick.getText().toUpperCase();
-        if (AlgoritmoPrincipalGerador.containsFicha(nomePer)) {
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
             JOptionPane.showMessageDialog(null, "Já existe um personagem com esse nome!",
                     "Error!", JOptionPane.WARNING_MESSAGE);
             return;
@@ -2305,8 +2306,8 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         Ficha ficha;
         String nomePer = jTextFieldNick.getText().toUpperCase();
         // retorna true se atacante for um nome valido
-        if (AlgoritmoPrincipalGerador.containsFicha(nomePer)) {
-            ficha = AlgoritmoPrincipalGerador.getFicha(nomePer);
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
+            ficha = AlgoritmoPrincipal.getFicha(nomePer);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome",
                     "Error!", JOptionPane.WARNING_MESSAGE);
@@ -3077,7 +3078,7 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         }
         
         // atualizando dados
-        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
+//        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
 //        AlgoritmoPrincipalGerador.loadFichas(folder);
         
         Ficha ficha = AlgoritmoPrincipalGerador.getFicha();
@@ -3138,9 +3139,20 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         }
         
         // salvando ficha
-        if (!AlgoritmoPrincipalGerador.saveFicha(folder)) {
-            return;
+        switch (AlgoritmoPrincipalGerador.getjButton()) {
+            case 0:
+                // inserindo nova ficha e novo personagem
+                if (!AlgoritmoPrincipal.saveFicha(ficha)) {
+                    return;
+                }
+                break;
+            case 2:
+                // substituindo ficha antiga pela editada
+                if (!AlgoritmoPrincipal.updateFicha(ficha)) {
+                    return;
+                }
         }
+        
         
         limparFicha();
         
@@ -3361,21 +3373,15 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         
         // importando ficha
         try {
-            AlgoritmoPrincipalGerador.loadFicha();
-        } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(ViewPrincipalGerador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        try {
+            Ficha newFicha = AlgoritmoPrincipalGerador.loadFicha();
             // salvando ficha
-            File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
-            AlgoritmoPrincipalGerador.saveFicha(folder);
+//            File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
+            AlgoritmoPrincipal.saveFicha(newFicha);
             
             JOptionPane.showMessageDialog(null, "Ficha salva com sucesso!\nNick: " +
                     AlgoritmoPrincipalGerador.getFicha().getNick(), "Success!", JOptionPane.INFORMATION_MESSAGE);
             
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | IOException ex) {
             Logger.getLogger(ViewPrincipalGerador.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Houve algum erro inesperado!", "Error!",
                     JOptionPane.ERROR_MESSAGE);
@@ -3561,8 +3567,8 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         // retorna true se atacante for um nome valido
         Ficha ficha;
         String nomePer = jTextFieldNick.getText().toUpperCase();
-        if (AlgoritmoPrincipalGerador.containsFicha(nomePer)) {
-            ficha = AlgoritmoPrincipalGerador.getFicha(nomePer);
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
+            ficha = AlgoritmoPrincipal.getFicha(nomePer);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome\n" +
                     "Insira o nome do personagem desejado no campo Nome", "Error!", JOptionPane.WARNING_MESSAGE);
@@ -3741,8 +3747,8 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         // retorna true se atacante for um nome valido
         Ficha ficha;
         String nomePer = jTextFieldNick.getText().toUpperCase();
-        if (AlgoritmoPrincipalGerador.containsFicha(nomePer)) {
-            ficha = AlgoritmoPrincipalGerador.getFicha(nomePer);
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
+            ficha = AlgoritmoPrincipal.getFicha(nomePer);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome",
                     "Error!", JOptionPane.WARNING_MESSAGE);
@@ -3848,8 +3854,8 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         // lendo o nome do personagem
         String nomePer = jTextFieldNick.getText().toUpperCase();
         // retorna true se atacante for um nome valido
-        if (AlgoritmoPrincipalGerador.containsFicha(nomePer)) {
-            ficha = AlgoritmoPrincipalGerador.getFicha(nomePer);
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
+            ficha = AlgoritmoPrincipal.getFicha(nomePer);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome",
                     "Error!", JOptionPane.WARNING_MESSAGE);
@@ -3866,7 +3872,7 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         // lendo o nome do personagem
         // retorna true se atacante for um nome valido
         String nomePer = jTextFieldNick.getText().toUpperCase();
-        if (!AlgoritmoPrincipalGerador.containsFicha(nomePer)) {
+        if (!AlgoritmoPrincipal.containsFicha(nomePer)) {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome\n" +
                     "Insira o nome do personagem desejado no campo Nome", "Error!", JOptionPane.WARNING_MESSAGE);
             return;
@@ -3875,19 +3881,21 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         switch (JOptionPane.showConfirmDialog(null, "Deseja deletar essa ficha?", "Warning!", JOptionPane.YES_NO_OPTION)) {
             case JOptionPane.YES_OPTION :
                 // deletando ficha
-                AlgoritmoPrincipalGerador.removeFicha(nomePer);
+                if (!AlgoritmoPrincipal.deleteFicha(nomePer)) {
+                    JOptionPane.showMessageDialog(null, "Não foi possível deletar a ficha!",
+                        "Error!", JOptionPane.WARNING_MESSAGE);
                 
-                // mensagem ao usuario
-                JOptionPane.showMessageDialog(null, "Ficha removida com sucesso!",
-                        "Success!", JOptionPane.INFORMATION_MESSAGE);
-                
-                // salvando banco de dados
-                AlgoritmoPrincipalGerador.saveFichas();
-                
-                // mensagem ao usuario
-                JOptionPane.showMessageDialog(null, "Banco de dados salvo com sucesso!",
-                        "Success!", JOptionPane.INFORMATION_MESSAGE);
-                break;
+                } else {
+                    AlgoritmoPrincipal.removeFicha(nomePer);
+                    
+                    // mensagem ao usuario
+                    JOptionPane.showMessageDialog(null, "Ficha removida com sucesso!",
+                            "Success!", JOptionPane.INFORMATION_MESSAGE);
+
+                    // mensagem ao usuario
+                    JOptionPane.showMessageDialog(null, "Banco de dados salvo com sucesso!",
+                            "Success!", JOptionPane.INFORMATION_MESSAGE);
+                }
         }
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
@@ -3931,8 +3939,8 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         // retorna true se atacante for um nome valido
         Ficha ficha;
         String nomePer = jTextFieldNick.getText().toUpperCase();
-        if (AlgoritmoPrincipalGerador.containsFicha(nomePer)) {
-            ficha = AlgoritmoPrincipalGerador.getFicha(nomePer);
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
+            ficha = AlgoritmoPrincipal.getFicha(nomePer);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome\n" +
                     "Insira o nome do personagem desejado no campo Nome", "Error!", JOptionPane.WARNING_MESSAGE);
@@ -3981,8 +3989,8 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         Ficha ficha;
         String nick = jTextFieldNick.getText().toUpperCase();
-        if (AlgoritmoPrincipalGerador.containsFicha(nick)) {
-            ficha = AlgoritmoPrincipalGerador.getFicha(nick);
+        if (AlgoritmoPrincipal.containsFicha(nick)) {
+            ficha = AlgoritmoPrincipal.getFicha(nick);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome\n" +
                     "Insira o nome do personagem desejado no campo Nome", "Error!", JOptionPane.WARNING_MESSAGE);

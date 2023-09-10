@@ -25,6 +25,7 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import algoritmos.batalhas.AlgoritmoPrincipal;
 
 import java.sql.*;
 
@@ -80,8 +81,9 @@ public class AlgoritmoPrincipalGerador {
         
         // carregando fichas
 //        loadPersonagens();
-        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
-        if (!AlgoritmoPrincipalGerador.loadFichas(folder)) {
+//        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
+//        if (!AlgoritmoPrincipalGerador.loadFichas(folder)) {
+        if (!AlgoritmoPrincipal.loadFichas()) {
             JOptionPane.showMessageDialog(null, "Fichas não encontradas!",
                     "Error!", JOptionPane.ERROR_MESSAGE);
             
@@ -259,6 +261,7 @@ public class AlgoritmoPrincipalGerador {
 //    }
     
     public static boolean saveFicha(File folder) throws ClassNotFoundException {
+        // IMPORTANT JOptionPane WARNING on subscribe ficha.dat file
         for (File file : folder.listFiles()) {
             String nick = file.getName();
             
@@ -497,15 +500,15 @@ public class AlgoritmoPrincipalGerador {
 //        }
 //    }
     
-    public static boolean loadFicha() throws FileNotFoundException, IOException, ClassNotFoundException {
+    public static Ficha loadFicha() throws FileNotFoundException, IOException, ClassNotFoundException {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ficha.dat"))) {
             Ficha ficha = (Ficha) ois.readObject();
             AlgoritmoPrincipalGerador.putFicha(ficha);
             AlgoritmoPrincipalGerador.setFicha(ficha);
-            return true;
+            return ficha;
         } catch (IOException e) {
             System.out.println(e.toString());
-            return false;
+            return null;
         }
     }
     

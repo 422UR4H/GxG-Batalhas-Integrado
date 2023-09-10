@@ -79,8 +79,9 @@ public class ViewPrincipal extends javax.swing.JFrame {
         Classes.init();
         
         // carregando fichas
-        File folder = new File(AlgoritmoPrincipal.getDIR_FICHAS());
-        if (!AlgoritmoPrincipal.loadFichas(folder)) {
+//        File folder = new File(AlgoritmoPrincipal.getDIR_FICHAS());
+//        if (!AlgoritmoPrincipal.loadFichas(folder)) {
+        if (!AlgoritmoPrincipal.loadFichas()) {
             JOptionPane.showMessageDialog(null, "Banco de dados não encontrado!",
                     "Error!", JOptionPane.ERROR_MESSAGE);
             
@@ -5196,9 +5197,10 @@ public class ViewPrincipal extends javax.swing.JFrame {
 //        try {
         // limpando as fichas existentes
         AlgoritmoPrincipal.getFichas().clear();
-        File folder = new File(AlgoritmoPrincipal.getDIR_FICHAS());
+//        File folder = new File(AlgoritmoPrincipal.getDIR_FICHAS());
         try {
-            if (!AlgoritmoPrincipal.loadFichas(folder)) {
+//            if (!AlgoritmoPrincipal.loadFichas(folder)) {
+            if (!AlgoritmoPrincipal.loadFichas()) {
                 JOptionPane.showMessageDialog(null, "Banco de dados de Personagens não encontrado!",
                         "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
@@ -6228,7 +6230,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemZerarTodosShusActionPerformed
 
     private void atualizarPontosInspiracaoBd(Ficha ficha) {
-        Connection execute = ModuloConexao.conector();
+//        Connection execute = ModuloConexao.conector();
+        Connection execute = ModuloConexao.postgresConector();
         String sql = "update ficha set pontosInspiracao = ? where nick = ?";
         
         try {
@@ -6244,7 +6247,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
 
     private void atualizarPontosHeroicosBd(Ficha ficha) {
-        Connection execute = ModuloConexao.conector();
+        Connection execute = ModuloConexao.postgresConector();
         String sql = "update ficha set pontosHeroicos = ? where nick = ?";
         
         try {
@@ -6376,7 +6379,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
             return;
         }
         
-        Connection execute = ModuloConexao.conector();
+        Connection execute = ModuloConexao.postgresConector();
         String sql = "update ficha set sortes = ? where nick = ?";
         
         // LINHA PRINCIPAL

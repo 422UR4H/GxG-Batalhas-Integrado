@@ -157,297 +157,345 @@ public class AlgoritmoPrincipal {
         AlgoritmoPrincipal.itemAddedByFunction = itemAddedByFunction;
     }
     
-//    public static boolean loadFichas() {
-//        String sql = "select * from ficha";
-//        PreparedStatement pst;
-//        ResultSet rs;
-//        Connection execute = ModuloConexao.conector();
-//        
-//        if (execute == null) {
-//            return false;
-//        }
-//        
-//        try {
-//            
-//            pst = execute.prepareStatement(sql);
-//            rs = pst.executeQuery();
-//            
-//            while (rs.next()) {
-//                Ficha ficha = new Ficha();
-//                Map<String, LvlExp> atr = ficha.getAtr();
-//                
-//                ficha.setNick(rs.getString(1));
-//                ficha.setNome(rs.getString(2));
-//                ficha.setClasse(rs.getString(3));
-//                ficha.setNen(rs.getString(4));
-//                ficha.setTendencia(rs.getString(5));
-//                ficha.setHunter(rs.getString(6));
-//                
-//                ficha.setDias(Double.parseDouble(rs.getString(7)));
-//                ficha.setAltura(Double.parseDouble(rs.getString(8)));
-//                ficha.setPeso(Double.parseDouble(rs.getString(9)));
-//                ficha.setIdade(Integer.parseInt(rs.getString(10)));
-//                
-//                ficha.setInventario(rs.getString(11));
-//                ficha.setDescricao(rs.getString(12));
-//                ficha.setDescricaoBreve(rs.getString(13));
-//                
-//                ficha.setIniFor(Integer.parseInt(rs.getString(14)));
-//                ficha.setIniCon(Integer.parseInt(rs.getString(15)));
-//                ficha.setIniDex(Integer.parseInt(rs.getString(16)));
-//                ficha.setIniInt(Integer.parseInt(rs.getString(17)));
-//                ficha.setIniCar(Integer.parseInt(rs.getString(18)));
-//                ficha.setIniMen(Integer.parseInt(rs.getString(19)));
-//                
-//                ficha.setValFor(Integer.parseInt(rs.getString(20)));
-//                ficha.setValCon(Integer.parseInt(rs.getString(21)));
-//                ficha.setValDex(Integer.parseInt(rs.getString(22)));
-//                ficha.setValInt(Integer.parseInt(rs.getString(23)));
-//                ficha.setValCar(Integer.parseInt(rs.getString(24)));
-//                ficha.setValMen(Integer.parseInt(rs.getString(25)));
-//                
-//                ficha.setModFor(Integer.parseInt(rs.getString(26)));
-//                ficha.setModCon(Integer.parseInt(rs.getString(27)));
-//                ficha.setModDex(Integer.parseInt(rs.getString(28)));
-//                ficha.setModInt(Integer.parseInt(rs.getString(29)));
-//                ficha.setModCar(Integer.parseInt(rs.getString(30)));
-//                ficha.setModMen(Integer.parseInt(rs.getString(31)));
-//                
-//                ficha.setbFor(Integer.parseInt(rs.getString(32)));
-//                ficha.setbCon(Integer.parseInt(rs.getString(33)));
-//                ficha.setbDex(Integer.parseInt(rs.getString(34)));
-//                ficha.setbInt(Integer.parseInt(rs.getString(35)));
-//                ficha.setbCar(Integer.parseInt(rs.getString(36)));
-//                ficha.setbMen(Integer.parseInt(rs.getString(37)));
-//                
-//                ficha.setPerFor(Integer.parseInt(rs.getString(38)));
-//                ficha.setPerCon(Integer.parseInt(rs.getString(39)));
-//                ficha.setPerDex(Integer.parseInt(rs.getString(40)));
-//                ficha.setPerInt(Integer.parseInt(rs.getString(41)));
-//                ficha.setPerCar(Integer.parseInt(rs.getString(42)));
-//                ficha.setPerMen(Integer.parseInt(rs.getString(43)));
-//                
-//                atr.get("REF").setExp(Integer.parseInt(rs.getString(44)));
-//                atr.get("EMS").setExp(Integer.parseInt(rs.getString(45)));
-//                atr.get("MAT").setExp(Integer.parseInt(rs.getString(46)));
-//                atr.get("MAN").setExp(Integer.parseInt(rs.getString(47)));
-//                atr.get("TRS").setExp(Integer.parseInt(rs.getString(48)));
-//                atr.get("ESP").setExp(Integer.parseInt(rs.getString(49)));
-//                atr.get("CDN").setExp(Integer.parseInt(rs.getString(50)));
-//                atr.get("TEN").setExp(Integer.parseInt(rs.getString(51)));
-//                atr.get("RYU").setExp(Integer.parseInt(rs.getString(52)));
-//                atr.get("AOP").setExp(Integer.parseInt(rs.getString(53)));
-//                atr.get("MOP").setExp(Integer.parseInt(rs.getString(54)));
-//                atr.get("ZTS").setExp(Integer.parseInt(rs.getString(55)));
-//                atr.get("EN").setExp(Integer.parseInt(rs.getString(56)));
-//                
-//                atr.get("REF").setLvl(Integer.parseInt(rs.getString(57)));
-//                atr.get("EMS").setLvl(Integer.parseInt(rs.getString(58)));
-//                atr.get("MAT").setLvl(Integer.parseInt(rs.getString(59)));
-//                atr.get("MAN").setLvl(Integer.parseInt(rs.getString(60)));
-//                atr.get("TRS").setLvl(Integer.parseInt(rs.getString(61)));
-//                atr.get("ESP").setLvl(Integer.parseInt(rs.getString(62)));
-//                atr.get("CDN").setLvl(Integer.parseInt(rs.getString(63)));
-//                atr.get("TEN").setLvl(Integer.parseInt(rs.getString(64)));
-//                atr.get("RYU").setLvl(Integer.parseInt(rs.getString(65)));
-//                atr.get("AOP").setLvl(Integer.parseInt(rs.getString(66)));
-//                atr.get("MOP").setLvl(Integer.parseInt(rs.getString(67)));
-//                atr.get("ZTS").setLvl(Integer.parseInt(rs.getString(68)));
-//                atr.get("EN").setLvl(Integer.parseInt(rs.getString(69)));
-//                
-//                ficha.setModCdn(Integer.parseInt(rs.getString(70)));
-//                ficha.setCoefHp(Integer.parseInt(rs.getString(71)));
-//                ficha.setLvl(Integer.parseInt(rs.getString(72)));
-//                ficha.setExp(Integer.parseInt(rs.getString(73)));
-//                ficha.setExpBonus(Integer.parseInt(rs.getString(74)));
-//                ficha.setLvlNen(Integer.parseInt(rs.getString(75)));
-//                ficha.setExpNen(Integer.parseInt(rs.getString(76)));
-//                ficha.setExpBonusNen(Integer.parseInt(rs.getString(77)));
-//                
-////              ficha.setHpMax(Integer.parseInt(rs.getString(78)))
-//                ficha.setMopMax(Integer.parseInt(rs.getString(79)));
-//                ficha.setHpNegMax(Integer.parseInt(rs.getString(80)));
-//                
-//                ficha.setHpAtual(Integer.parseInt(rs.getString(81)));
-//                ficha.setMopAtual(Integer.parseInt(rs.getString(82)));
-//                ficha.setHpNegAtual(Integer.parseInt(rs.getString(83)));
-//                
-//                ficha.setIni(Integer.parseInt(rs.getString(84)));
-//                ficha.setEsq(Integer.parseInt(rs.getString(85)));
-//                ficha.setApr(Integer.parseInt(rs.getString(86)));
-//                ficha.setCrt(Integer.parseInt(rs.getString(87)));
-//                ficha.setVel(Integer.parseInt(rs.getString(88)));
-//                
-//                ficha.setbIntCdn(Integer.parseInt(rs.getString(89)));
-////              ficha.setSorte(Integer.parseInt(rs.getString(90)));
-//                ficha.setSorteDiaria(Integer.parseInt(rs.getString(91)));
-//                ficha.setModClas(Double.parseDouble(rs.getString(92)));
-//                
-//                ficha.setSortePorLvl(convertStB(rs.getString(93)));
-//                ficha.setPersonagemDeJogador(convertStB(rs.getString(94)));
-//                ficha.setCriaturaDoMestre(convertStB(rs.getString(95)));
-//                
-//                ficha.setPontosHeroicos(Integer.parseInt(rs.getString(96)));
-//                ficha.setPontosInspiracao(Integer.parseInt(rs.getString(97)));
-//                
-//                ficha.setShu(Integer.parseInt(rs.getString(98)));
-//                ficha.setStun(Integer.parseInt(rs.getString(99)));
-//                
-//                ficha.setDesmaiado(convertStB(rs.getString(100)));
-//                
-//                ficha.setAtkPad(rs.getString(101));
-//                ficha.setDefPad(rs.getString(102));
-//                
-//                
-//                ficha.setHp();
-//                ficha.resetSortes();
-//                
-//                
-//                // habilidades
-//                sql = "select * from habilidades where nick = ?";
-//                PreparedStatement pst2 = execute.prepareStatement(sql);
-//                pst2.setString(1, ficha.getNick());
-//                ResultSet rs2 = pst2.executeQuery();
-//                
-//                ficha.getHabilidades().clear();
-//                
-//                while (rs2.next()) {
-//                    Habilidades habilidade = new Habilidades();
-//                    
-//                    habilidade.setNome(rs2.getString(2));
-//                    habilidade.setArma(rs2.getString(3));
-//                    habilidade.setDados(rs2.getString(4));
-//                    habilidade.setProficiencia(rs2.getString(5));
-//                    
-//                    habilidade.setDescricao(rs2.getString(6));
-//                    habilidade.setDescricaoBreve(rs2.getString(7));
-//                    
-//                    habilidade.setRestricao(Double.parseDouble(rs2.getString(8)));
-//                    
-//                    habilidade.setDano(Integer.parseInt(rs2.getString(9)));
-//                    habilidade.setDanoPorSegundo(Integer.parseInt(rs2.getString(10)));
-//                    habilidade.setAuraBonus(Integer.parseInt(rs2.getString(11)));
-//                    habilidade.setTurnoDps(Integer.parseInt(rs2.getString(12)));
-//                    habilidade.setDecrescimoDpsPorTurno(Integer.parseInt(rs2.getString(13)));
-//                    habilidade.setQtd(Integer.parseInt(rs2.getString(14)));
-//                    habilidade.setVol(Integer.parseInt(rs2.getString(15)));
-//                    habilidade.setCrt(Integer.parseInt(rs2.getString(16)));
-//                    habilidade.setDanoFixo(Integer.parseInt(rs2.getString(17)));
-//                    habilidade.setAcertoFixo(Integer.parseInt(rs2.getString(18)));
-//                    habilidade.setLvl(Integer.parseInt(rs2.getString(19)));
-//                    habilidade.setSubLvl(Integer.parseInt(rs2.getString(20)));
-//                    habilidade.setBonus(Integer.parseInt(rs2.getString(21)));
-//                    
-//                    habilidade.setQtdFor(Integer.parseInt(rs2.getString(22)));
-//                    habilidade.setQtdCon(Integer.parseInt(rs2.getString(23)));
-//                    habilidade.setQtdDex(Integer.parseInt(rs2.getString(24)));
-//                    habilidade.setQtdInt(Integer.parseInt(rs2.getString(25)));
-//                    habilidade.setQtdCar(Integer.parseInt(rs2.getString(26)));
-//                    habilidade.setQtdMen(Integer.parseInt(rs2.getString(27)));
-//                    habilidade.setQtdRef(Integer.parseInt(rs2.getString(28)));
-//                    habilidade.setQtdEms(Integer.parseInt(rs2.getString(29)));
-//                    habilidade.setQtdMan(Integer.parseInt(rs2.getString(30)));
-//                    habilidade.setQtdMat(Integer.parseInt(rs2.getString(31)));
-//                    habilidade.setQtdTrs(Integer.parseInt(rs2.getString(32)));
-//                    habilidade.setQtdEsp(Integer.parseInt(rs2.getString(33)));
-//                    habilidade.setQtdEsq(Integer.parseInt(rs2.getString(34)));
-//                    habilidade.setQtdVel(Integer.parseInt(rs2.getString(35)));
-//                    habilidade.setQtdTen(Integer.parseInt(rs2.getString(36)));
-//                    habilidade.setQtdAop(Integer.parseInt(rs2.getString(37)));
-//                    habilidade.setQtdMop(Integer.parseInt(rs2.getString(38)));
-//                    habilidade.setQtdCdn(Integer.parseInt(rs2.getString(39)));
-//                    
-//                    habilidade.setPerfurante(convertStB(rs2.getString(40)));
-//                    habilidade.setGastaAura(convertStB(rs2.getString(41)));
-//                    habilidade.setTrs(convertStB(rs2.getString(42)));
-//                    habilidade.setMat(convertStB(rs2.getString(43)));
-//                    habilidade.setMan(convertStB(rs2.getString(44)));
-//                    habilidade.setDps(convertStB(rs2.getString(45)));
-//                    habilidade.setRebote(convertStB(rs2.getString(46)));
-//                    
-//                    habilidade.setSomarFor(convertStB(rs2.getString(47)));
-//                    habilidade.setSomarCon(convertStB(rs2.getString(48)));
-//                    habilidade.setSomarDex(convertStB(rs2.getString(49)));
-//                    habilidade.setSomarInt(convertStB(rs2.getString(50)));
-//                    habilidade.setSomarCar(convertStB(rs2.getString(51)));
-//                    habilidade.setSomarMen(convertStB(rs2.getString(52)));
-//                    habilidade.setSomarRef(convertStB(rs2.getString(53)));
-//                    habilidade.setSomarEms(convertStB(rs2.getString(54)));
-//                    habilidade.setSomarMan(convertStB(rs2.getString(55)));
-//                    habilidade.setSomarMat(convertStB(rs2.getString(56)));
-//                    habilidade.setSomarTrs(convertStB(rs2.getString(57)));
-//                    habilidade.setSomarEsp(convertStB(rs2.getString(58)));
-//                    habilidade.setSomarEsq(convertStB(rs2.getString(59)));
-//                    habilidade.setSomarVel(convertStB(rs2.getString(60)));
-//                    habilidade.setSomarTen(convertStB(rs2.getString(61)));
-//                    habilidade.setSomarAop(convertStB(rs2.getString(62)));
-//                    habilidade.setSomarMop(convertStB(rs2.getString(63)));
-//                    habilidade.setSomarCdn(convertStB(rs2.getString(64)));
-//                    
-//                    try {
-//                        habilidade.setRyu(Integer.parseInt(rs2.getString(65)));
-//                        habilidade.setDanoRebote(convertStB(rs2.getString(66)));
-//                        habilidade.setGastaRyu(convertStB(rs2.getString(67)));
-//                    } catch (NumberFormatException e) {
-//                        
-//                    }
-//                    
-//                    
-//                    // inserindo habilidade
-//                    ficha.putHabilidade(habilidade.getNome(), habilidade);
-//                }
-//                
-//                
-//                // pro
-//                sql = "select * from pro where nick = ?";
-//                PreparedStatement pst3 = execute.prepareStatement(sql);
-//                pst3.setString(1, ficha.getNick());
-//                ResultSet rs3 = pst3.executeQuery();
-//                
-//                ficha.getPro().clear();
-//                
-//                while (rs3.next()) {
-//                    LvlBonus lvlBonus = new LvlBonus();
-//                    
-//                    lvlBonus.setLvl(Integer.parseInt(rs3.getString(3)));
-//                    lvlBonus.setLvj(Integer.parseInt(rs3.getString(4)));
-//                    lvlBonus.setBonus(Integer.parseInt(rs3.getString(5)));
-//                    
-//                    ficha.getPro().put(rs3.getString(2), lvlBonus);
-//                }
-//                
-//                
-//                // per
-//                sql = "select * from per where nick = ?";
-//                PreparedStatement pst4 = execute.prepareStatement(sql);
-//                pst4.setString(1, ficha.getNick());
-//                ResultSet rs4 = pst4.executeQuery();
-//                
-//                ficha.getPer().clear();
-//                
-//                while (rs4.next()) {
-//                    LvlBonus lvlBonus = new LvlBonus();
-//                    
-//                    lvlBonus.setLvl(Integer.parseInt(rs4.getString(3)));
-//                    lvlBonus.setLvj(Integer.parseInt(rs4.getString(4)));
-//                    lvlBonus.setBonus(Integer.parseInt(rs4.getString(5)));
-//                    
-//                    ficha.getPer().put(rs4.getString(2), lvlBonus);
-//                }
-//                
-//                fichas.put(ficha.getNick(), ficha);
-//                
-//            }
-//            
-//            execute.close();
-//            return true;
-//            
-//        } catch (SQLException e) {
-//            System.out.println(e);
-//            return false;
-//        }
-//    }
+    public static void removeFicha(String nome) {
+        AlgoritmoPrincipal.fichas.remove(nome);
+    }
     
+    public static boolean deleteFicha(String nick) {
+        PreparedStatement pst;
+        String sql;
+        Connection execute = ModuloConexao.postgresConector();
+
+        try {
+            // deletando habilidades
+            sql = "DELETE FROM habilidades WHERE nick = ?";
+            pst = execute.prepareStatement(sql);
+            pst.setString(1, nick);
+
+            pst.execute();
+
+            // deletendo proficiencias
+            sql = "DELETE FROM pro WHERE nick = ? ";
+            pst = execute.prepareStatement(sql);
+            pst.setString(1, nick);
+
+            pst.execute();
+
+            // deletando pericias
+            sql = "DELETE FROM per WHERE nick = ?";
+            pst = execute.prepareStatement(sql);
+            pst.setString(1, nick);
+
+            pst.execute();
+            
+            // deletando ficha
+            sql = "DELETE FROM ficha WHERE nick = ?";
+            pst = execute.prepareStatement(sql);
+            pst.setString(1, nick);
+            
+            pst.execute();
+            
+            execute.close();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e);
+            System.out.println("falha no delete - ficha");
+            return false;
+        }
+    }
+    
+    public static boolean loadFichas() {
+        String sql = "select * from ficha";
+        PreparedStatement pst;
+        ResultSet rs;
+        Connection execute = ModuloConexao.postgresConector();
+        
+        if (execute == null) {
+            return false;
+        }
+        
+        try {
+            
+            pst = execute.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                Ficha ficha = new Ficha();
+                Map<String, LvlExp> atr = ficha.getAtr();
+                
+                ficha.setNick(rs.getString(1));
+                ficha.setNome(rs.getString(2));
+                ficha.setClasse(rs.getString(3));
+                ficha.setNen(rs.getString(4));
+                ficha.setTendencia(rs.getString(5));
+                ficha.setHunter(rs.getString(6));
+                
+                ficha.setDias(Double.parseDouble(rs.getString(7)));
+                ficha.setAltura(Double.parseDouble(rs.getString(8)));
+                ficha.setPeso(Double.parseDouble(rs.getString(9)));
+                ficha.setIdade(Integer.parseInt(rs.getString(10)));
+                
+                ficha.setInventario(rs.getString(11));
+                ficha.setDescricao(rs.getString(12));
+                ficha.setDescricaoBreve(rs.getString(13));
+                
+                ficha.setIniFor(Integer.parseInt(rs.getString(14)));
+                ficha.setIniCon(Integer.parseInt(rs.getString(15)));
+                ficha.setIniDex(Integer.parseInt(rs.getString(16)));
+                ficha.setIniInt(Integer.parseInt(rs.getString(17)));
+                ficha.setIniCar(Integer.parseInt(rs.getString(18)));
+                ficha.setIniMen(Integer.parseInt(rs.getString(19)));
+                
+                ficha.setValFor(Integer.parseInt(rs.getString(20)));
+                ficha.setValCon(Integer.parseInt(rs.getString(21)));
+                ficha.setValDex(Integer.parseInt(rs.getString(22)));
+                ficha.setValInt(Integer.parseInt(rs.getString(23)));
+                ficha.setValCar(Integer.parseInt(rs.getString(24)));
+                ficha.setValMen(Integer.parseInt(rs.getString(25)));
+                
+                ficha.setModFor(Integer.parseInt(rs.getString(26)));
+                ficha.setModCon(Integer.parseInt(rs.getString(27)));
+                ficha.setModDex(Integer.parseInt(rs.getString(28)));
+                ficha.setModInt(Integer.parseInt(rs.getString(29)));
+                ficha.setModCar(Integer.parseInt(rs.getString(30)));
+                ficha.setModMen(Integer.parseInt(rs.getString(31)));
+                
+                ficha.setbFor(Integer.parseInt(rs.getString(32)));
+                ficha.setbCon(Integer.parseInt(rs.getString(33)));
+                ficha.setbDex(Integer.parseInt(rs.getString(34)));
+                ficha.setbInt(Integer.parseInt(rs.getString(35)));
+                ficha.setbCar(Integer.parseInt(rs.getString(36)));
+                ficha.setbMen(Integer.parseInt(rs.getString(37)));
+                
+                ficha.setPerFor(Integer.parseInt(rs.getString(38)));
+                ficha.setPerCon(Integer.parseInt(rs.getString(39)));
+                ficha.setPerDex(Integer.parseInt(rs.getString(40)));
+                ficha.setPerInt(Integer.parseInt(rs.getString(41)));
+                ficha.setPerCar(Integer.parseInt(rs.getString(42)));
+                ficha.setPerMen(Integer.parseInt(rs.getString(43)));
+                
+                atr.get("REF").setExp(Integer.parseInt(rs.getString(44)));
+                atr.get("EMS").setExp(Integer.parseInt(rs.getString(45)));
+                atr.get("MAT").setExp(Integer.parseInt(rs.getString(46)));
+                atr.get("MAN").setExp(Integer.parseInt(rs.getString(47)));
+                atr.get("TRS").setExp(Integer.parseInt(rs.getString(48)));
+                atr.get("ESP").setExp(Integer.parseInt(rs.getString(49)));
+                atr.get("CDN").setExp(Integer.parseInt(rs.getString(50)));
+                atr.get("TEN").setExp(Integer.parseInt(rs.getString(51)));
+                atr.get("RYU").setExp(Integer.parseInt(rs.getString(52)));
+                atr.get("AOP").setExp(Integer.parseInt(rs.getString(53)));
+                atr.get("MOP").setExp(Integer.parseInt(rs.getString(54)));
+                atr.get("ZTS").setExp(Integer.parseInt(rs.getString(55)));
+                atr.get("EN").setExp(Integer.parseInt(rs.getString(56)));
+                
+                atr.get("REF").setLvl(Integer.parseInt(rs.getString(57)));
+                atr.get("EMS").setLvl(Integer.parseInt(rs.getString(58)));
+                atr.get("MAT").setLvl(Integer.parseInt(rs.getString(59)));
+                atr.get("MAN").setLvl(Integer.parseInt(rs.getString(60)));
+                atr.get("TRS").setLvl(Integer.parseInt(rs.getString(61)));
+                atr.get("ESP").setLvl(Integer.parseInt(rs.getString(62)));
+                atr.get("CDN").setLvl(Integer.parseInt(rs.getString(63)));
+                atr.get("TEN").setLvl(Integer.parseInt(rs.getString(64)));
+                atr.get("RYU").setLvl(Integer.parseInt(rs.getString(65)));
+                atr.get("AOP").setLvl(Integer.parseInt(rs.getString(66)));
+                atr.get("MOP").setLvl(Integer.parseInt(rs.getString(67)));
+                atr.get("ZTS").setLvl(Integer.parseInt(rs.getString(68)));
+                atr.get("EN").setLvl(Integer.parseInt(rs.getString(69)));
+                
+                ficha.setModCdn(Integer.parseInt(rs.getString(70)));
+                ficha.setCoefHp(Integer.parseInt(rs.getString(71)));
+                ficha.setLvl(Integer.parseInt(rs.getString(72)));
+                ficha.setExp(Integer.parseInt(rs.getString(73)));
+                ficha.setExpBonus(Integer.parseInt(rs.getString(74)));
+                ficha.setLvlNen(Integer.parseInt(rs.getString(75)));
+                ficha.setExpNen(Integer.parseInt(rs.getString(76)));
+                ficha.setExpBonusNen(Integer.parseInt(rs.getString(77)));
+                
+//              ficha.setHpMax(Integer.parseInt(rs.getString(78)))
+                ficha.setMopMax(Integer.parseInt(rs.getString(79)));
+                ficha.setHpNegMax(Integer.parseInt(rs.getString(80)));
+                
+                ficha.setHpAtual(Integer.parseInt(rs.getString(81)));
+                ficha.setMopAtual(Integer.parseInt(rs.getString(82)));
+                ficha.setHpNegAtual(Integer.parseInt(rs.getString(83)));
+                
+                ficha.setIni(Integer.parseInt(rs.getString(84)));
+                ficha.setEsq(Integer.parseInt(rs.getString(85)));
+                ficha.setApr(Integer.parseInt(rs.getString(86)));
+                ficha.setCrt(Integer.parseInt(rs.getString(87)));
+                ficha.setVel(Integer.parseInt(rs.getString(88)));
+                
+                ficha.setbIntCdn(Integer.parseInt(rs.getString(89)));
+//              ficha.setSorte(Integer.parseInt(rs.getString(90)));
+                ficha.setSorteDiaria(Integer.parseInt(rs.getString(91)));
+                ficha.setModClas(Double.parseDouble(rs.getString(92)));
+                
+                ficha.setSortePorLvl(convertStB(rs.getString(93)));
+                ficha.setPersonagemDeJogador(convertStB(rs.getString(94)));
+                ficha.setCriaturaDoMestre(convertStB(rs.getString(95)));
+                
+                ficha.setPontosHeroicos(Integer.parseInt(rs.getString(96)));
+                ficha.setPontosInspiracao(Integer.parseInt(rs.getString(97)));
+                
+                ficha.setShu(Integer.parseInt(rs.getString(98)));
+                ficha.setStun(Integer.parseInt(rs.getString(99)));
+                
+                ficha.setDesmaiado(convertStB(rs.getString(100)));
+                
+                ficha.setAtkPad(rs.getString(101));
+                ficha.setDefPad(rs.getString(102));
+                
+                
+                ficha.setHp();
+                ficha.resetSortes();
+                
+                
+                // habilidades
+                sql = "select * from habilidades where nick = ?";
+                PreparedStatement pst2 = execute.prepareStatement(sql);
+                pst2.setString(1, ficha.getNick());
+                ResultSet rs2 = pst2.executeQuery();
+                
+                ficha.getHabilidades().clear();
+                
+                while (rs2.next()) {
+                    Habilidades habilidade = new Habilidades();
+                    
+                    habilidade.setNome(rs2.getString(2));
+                    habilidade.setArma(rs2.getString(3));
+                    habilidade.setDados(rs2.getString(4));
+                    habilidade.setProficiencia(rs2.getString(5));
+                    
+                    habilidade.setDescricao(rs2.getString(6));
+                    habilidade.setDescricaoBreve(rs2.getString(7));
+                    
+                    habilidade.setRestricao(Double.parseDouble(rs2.getString(8)));
+                    
+                    habilidade.setDano(Integer.parseInt(rs2.getString(9)));
+                    habilidade.setDanoPorSegundo(Integer.parseInt(rs2.getString(10)));
+                    habilidade.setAuraBonus(Integer.parseInt(rs2.getString(11)));
+                    habilidade.setTurnoDps(Integer.parseInt(rs2.getString(12)));
+                    habilidade.setDecrescimoDpsPorTurno(Integer.parseInt(rs2.getString(13)));
+                    habilidade.setQtd(Integer.parseInt(rs2.getString(14)));
+                    habilidade.setVol(Integer.parseInt(rs2.getString(15)));
+                    habilidade.setCrt(Integer.parseInt(rs2.getString(16)));
+                    habilidade.setDanoFixo(Integer.parseInt(rs2.getString(17)));
+                    habilidade.setAcertoFixo(Integer.parseInt(rs2.getString(18)));
+                    habilidade.setLvl(Integer.parseInt(rs2.getString(19)));
+                    habilidade.setSubLvl(Integer.parseInt(rs2.getString(20)));
+                    habilidade.setBonus(Integer.parseInt(rs2.getString(21)));
+                    
+                    habilidade.setQtdFor(Integer.parseInt(rs2.getString(22)));
+                    habilidade.setQtdCon(Integer.parseInt(rs2.getString(23)));
+                    habilidade.setQtdDex(Integer.parseInt(rs2.getString(24)));
+                    habilidade.setQtdInt(Integer.parseInt(rs2.getString(25)));
+                    habilidade.setQtdCar(Integer.parseInt(rs2.getString(26)));
+                    habilidade.setQtdMen(Integer.parseInt(rs2.getString(27)));
+                    habilidade.setQtdRef(Integer.parseInt(rs2.getString(28)));
+                    habilidade.setQtdEms(Integer.parseInt(rs2.getString(29)));
+                    habilidade.setQtdMan(Integer.parseInt(rs2.getString(30)));
+                    habilidade.setQtdMat(Integer.parseInt(rs2.getString(31)));
+                    habilidade.setQtdTrs(Integer.parseInt(rs2.getString(32)));
+                    habilidade.setQtdEsp(Integer.parseInt(rs2.getString(33)));
+                    habilidade.setQtdEsq(Integer.parseInt(rs2.getString(34)));
+                    habilidade.setQtdVel(Integer.parseInt(rs2.getString(35)));
+                    habilidade.setQtdTen(Integer.parseInt(rs2.getString(36)));
+                    habilidade.setQtdAop(Integer.parseInt(rs2.getString(37)));
+                    habilidade.setQtdMop(Integer.parseInt(rs2.getString(38)));
+                    habilidade.setQtdCdn(Integer.parseInt(rs2.getString(39)));
+                    
+                    habilidade.setPerfurante(convertStB(rs2.getString(40)));
+                    habilidade.setGastaAura(convertStB(rs2.getString(41)));
+                    habilidade.setTrs(convertStB(rs2.getString(42)));
+                    habilidade.setMat(convertStB(rs2.getString(43)));
+                    habilidade.setMan(convertStB(rs2.getString(44)));
+                    habilidade.setDps(convertStB(rs2.getString(45)));
+                    habilidade.setRebote(convertStB(rs2.getString(46)));
+                    
+                    habilidade.setSomarFor(convertStB(rs2.getString(47)));
+                    habilidade.setSomarCon(convertStB(rs2.getString(48)));
+                    habilidade.setSomarDex(convertStB(rs2.getString(49)));
+                    habilidade.setSomarInt(convertStB(rs2.getString(50)));
+                    habilidade.setSomarCar(convertStB(rs2.getString(51)));
+                    habilidade.setSomarMen(convertStB(rs2.getString(52)));
+                    habilidade.setSomarRef(convertStB(rs2.getString(53)));
+                    habilidade.setSomarEms(convertStB(rs2.getString(54)));
+                    habilidade.setSomarMan(convertStB(rs2.getString(55)));
+                    habilidade.setSomarMat(convertStB(rs2.getString(56)));
+                    habilidade.setSomarTrs(convertStB(rs2.getString(57)));
+                    habilidade.setSomarEsp(convertStB(rs2.getString(58)));
+                    habilidade.setSomarEsq(convertStB(rs2.getString(59)));
+                    habilidade.setSomarVel(convertStB(rs2.getString(60)));
+                    habilidade.setSomarTen(convertStB(rs2.getString(61)));
+                    habilidade.setSomarAop(convertStB(rs2.getString(62)));
+                    habilidade.setSomarMop(convertStB(rs2.getString(63)));
+                    habilidade.setSomarCdn(convertStB(rs2.getString(64)));
+                    
+                    try {
+                        habilidade.setRyu(Integer.parseInt(rs2.getString(65)));
+                        habilidade.setDanoRebote(convertStB(rs2.getString(66)));
+                        habilidade.setGastaRyu(convertStB(rs2.getString(67)));
+                    } catch (NumberFormatException e) {
+                        
+                    }
+                    
+                    
+                    // inserindo habilidade
+                    ficha.putHabilidade(habilidade.getNome(), habilidade);
+                }
+                
+                
+                // pro
+                sql = "select * from pro where nick = ?";
+                PreparedStatement pst3 = execute.prepareStatement(sql);
+                pst3.setString(1, ficha.getNick());
+                ResultSet rs3 = pst3.executeQuery();
+                
+                ficha.getPro().clear();
+                
+                while (rs3.next()) {
+                    LvlBonus lvlBonus = new LvlBonus();
+                    
+                    lvlBonus.setLvl(Integer.parseInt(rs3.getString(3)));
+                    lvlBonus.setLvj(Integer.parseInt(rs3.getString(4)));
+                    lvlBonus.setBonus(Integer.parseInt(rs3.getString(5)));
+                    
+                    ficha.getPro().put(rs3.getString(2), lvlBonus);
+                }
+                
+                
+                // per
+                sql = "select * from per where nick = ?";
+                PreparedStatement pst4 = execute.prepareStatement(sql);
+                pst4.setString(1, ficha.getNick());
+                ResultSet rs4 = pst4.executeQuery();
+                
+                ficha.getPer().clear();
+                
+                while (rs4.next()) {
+                    LvlBonus lvlBonus = new LvlBonus();
+                    
+                    lvlBonus.setLvl(Integer.parseInt(rs4.getString(3)));
+                    lvlBonus.setLvj(Integer.parseInt(rs4.getString(4)));
+                    lvlBonus.setBonus(Integer.parseInt(rs4.getString(5)));
+                    
+                    ficha.getPer().put(rs4.getString(2), lvlBonus);
+                }
+                
+                fichas.put(ficha.getNick(), ficha);
+                
+            }
+            
+            execute.close();
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    // new
 //    public static boolean loadFichas() throws FileNotFoundException, IOException, ClassNotFoundException {
 //        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(/*DIR_GERADOR +*/ "C:\\dataBase\\BD_Fichas.dat"))) {
 //            fichas = (Map<String, Ficha>) ois.readObject();
@@ -460,25 +508,25 @@ public class AlgoritmoPrincipal {
 //        }
 //    }
     
-    public static boolean loadFichas(File folder) throws ClassNotFoundException {
-        for (File file : folder.listFiles()) {
-            if (!file.isDirectory()) {
-                try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(folder + "\\" + file.getName()))) {
-                    Ficha ficha = (Ficha) ois.readObject();
-                    fichas.put(ficha.getNick(), ficha);
-                } catch (IOException e) {
-                    System.out.println(e.toString());
-                    JOptionPane.showMessageDialog(null, "Algo errado!", "No DataBase!",
-                            JOptionPane.WARNING_MESSAGE);
-                    System.out.println(folder + "\\" + file.getName());
-                    return false;
-                }
-            } else {
-                loadFichas(file);
-            }
-        }
-        return true;
-    }
+//    public static boolean loadFichas(File folder) throws ClassNotFoundException {
+//        for (File file : folder.listFiles()) {
+//            if (!file.isDirectory()) {
+//                try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(folder + "\\" + file.getName()))) {
+//                    Ficha ficha = (Ficha) ois.readObject();
+//                    fichas.put(ficha.getNick(), ficha);
+//                } catch (IOException e) {
+//                    System.out.println(e.toString());
+//                    JOptionPane.showMessageDialog(null, "Algo errado!", "No DataBase!",
+//                            JOptionPane.WARNING_MESSAGE);
+//                    System.out.println(folder + "\\" + file.getName());
+//                    return false;
+//                }
+//            } else {
+//                loadFichas(file);
+//            }
+//        }
+//        return true;
+//    }
     
 //    public static boolean loadAtkPad() throws ClassNotFoundException {
 //        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DIR_GERADOR + "dataBase\\BD_AtkPad.dat"))) {
@@ -506,6 +554,15 @@ public class AlgoritmoPrincipal {
 //        }
 //    }
     
+    public static boolean containsFicha(String nomeFicha) {
+        for (String nome : fichas.keySet()) {
+            if (nomeFicha.equals(fichas.get(nome).getNick())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public static String convertBtS(boolean b) {
         if (b) {
             return "1";
@@ -520,824 +577,345 @@ public class AlgoritmoPrincipal {
         return false;
     }
     
-//    public static boolean saveFichas() {
-//        
-//        PreparedStatement pst;
-//        ResultSet rs;
-//        String sql;
-//        Connection execute = ModuloConexao.conector();
-//        
-//        // limpando banco para nova inserção de fichas
-////        try {
-////            sql = "truncate table pro";
-////            pst = execute.prepareStatement(sql);
-////            pst.execute();
-////            
-////            sql = "truncate table per";
-////            pst = execute.prepareStatement(sql);
-////            pst.execute();
-////            
-////            sql = "truncate table habilidades";
-////            pst = execute.prepareStatement(sql);
-////            pst.execute();
-//            
-////            sql = "alter table per drop foreign key per_ibfk_1";
-////            pst = execute.prepareStatement(sql);
-////            pst.execute();
-////            
-////            sql = "alter table pro drop foreign key pro_ibfk_1";
-////            pst = execute.prepareStatement(sql);
-////            pst.execute();
-////            
-////            sql = "alter table habilidades drop foreign key habilidades_ibfk_1";
-////            pst = execute.prepareStatement(sql);
-////            pst.execute();
-//            
-////            sql = "truncate table ficha";
-////            pst = execute.prepareStatement(sql);
-////            pst.execute();
-//            
-////        } catch (SQLException e) {
-////            System.out.println("NÃO FOI POSSIVEL LIMPAR O BANCO");
-////            System.out.println(e);
-////        }
-//        
-//        
-//        for (String nick : fichas.keySet()) {
-//            Ficha ficha = fichas.get(nick);
-//            boolean existeFicha = false;
-//
-//            // analizando existencia de ficha
-////            try {
-////                sql = "select nick from ficha";
-////                pst = execute.prepareStatement(sql);
-////                rs = pst.executeQuery();
-////                // procurando a ficha no banco
-////                while (rs.next()) {
-////                    if (rs.getString(1).equals(nick)) {
-////                        existeFicha = true;
-////                        break;
-////                    }
-////                }
-////            } catch (SQLException e) {
-////                System.out.println("campo vazio - ficha");
-////            }
-////            
-////            // se existe a ficha, então deletemos ela para reinserir
-////            if (existeFicha) {
-////                // para deletar a ficha, devemos deletar habilidades
-////                // depois pericias e depois proficiencias
-////                // para, então, deletarmos ficha. então...
-////
-////                try {
-////                    sql = "delete from habilidades where nick = " + nick;
-////                    pst = execute.prepareStatement(sql);
-////                    pst.execute();
-////                } catch (SQLException e) {
-////                    System.out.println("habilidade nao deletada - ficha");
-////                    System.out.println(e);
-////                }
-////
-////                try {
-////                    sql = "delete from per where nick = " + nick;
-////                    pst = execute.prepareStatement(sql);
-////                    pst.execute();
-////                } catch (Exception e) {
-////                    System.out.println("per nao deletada - ficha");
-////                    System.out.println(e);
-////                }
-////
-////                try {
-////                    sql = "delete from pro where nick = " + nick;
-////                    pst = execute.prepareStatement(sql);
-////                    pst.execute();
-////                } catch (Exception e) {
-////                    System.out.println("pro nao deletada - ficha");
-////                    System.out.println(e);
-////                }
-////
-////                try {
-////                    sql = "delete from ficha where nick = " + nick;
-////                    pst = execute.prepareStatement(sql);
-////                    pst.execute();
-////                } catch (Exception e) {
-////                    System.out.println("ficha nao deletada - ficha");
-////                    System.out.println(e);
-////                }
-////            }
-//
-//            // inserindo ficha
-//            try {
-//                sql = "insert into ficha values(" +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?)";
-//
-//                pst = execute.prepareStatement(sql);
-//
-//                pst.setString(1, nick);
-//                pst.setString(2, ficha.getNome());
-//                pst.setString(3, ficha.getClasse());
-//                pst.setString(4, ficha.getNen());
-//                pst.setString(5, ficha.getTendencia());
-//                pst.setString(6, ficha.getHunter());
-//
-//                pst.setString(7, String.valueOf(ficha.getDias()));
-//                pst.setString(8, String.valueOf(ficha.getAltura()));
-//                pst.setString(9, String.valueOf(ficha.getPeso()));
-//                pst.setString(10, String.valueOf(ficha.getIdade()));
-//
-//                pst.setString(11, ficha.getInventario());
-//                pst.setString(12, ficha.getDescricao());
-//                pst.setString(13, ficha.getDescricaoBreve());
-//
-//                pst.setString(14, String.valueOf(ficha.getIniFor()));
-//                pst.setString(15, String.valueOf(ficha.getIniCon()));
-//                pst.setString(16, String.valueOf(ficha.getIniDex()));
-//                pst.setString(17, String.valueOf(ficha.getIniInt()));
-//                pst.setString(18, String.valueOf(ficha.getIniCar()));
-//                pst.setString(19, String.valueOf(ficha.getIniMen()));
-//
-//                pst.setString(20, String.valueOf(ficha.getValFor()));
-//                pst.setString(21, String.valueOf(ficha.getValCon()));
-//                pst.setString(22, String.valueOf(ficha.getValDex()));
-//                pst.setString(23, String.valueOf(ficha.getValInt()));
-//                pst.setString(24, String.valueOf(ficha.getValCar()));
-//                pst.setString(25, String.valueOf(ficha.getValMen()));
-//
-//                pst.setString(26, String.valueOf(ficha.getModFor()));
-//                pst.setString(27, String.valueOf(ficha.getModCon()));
-//                pst.setString(28, String.valueOf(ficha.getModDex()));
-//                pst.setString(29, String.valueOf(ficha.getModInt()));
-//                pst.setString(30, String.valueOf(ficha.getModCar()));
-//                pst.setString(31, String.valueOf(ficha.getModMen()));
-//
-//                pst.setString(32, String.valueOf(ficha.getbFor()));
-//                pst.setString(33, String.valueOf(ficha.getbCon()));
-//                pst.setString(34, String.valueOf(ficha.getbDex()));
-//                pst.setString(35, String.valueOf(ficha.getbInt()));
-//                pst.setString(36, String.valueOf(ficha.getbCar()));
-//                pst.setString(37, String.valueOf(ficha.getbMen()));
-//
-//                pst.setString(38, String.valueOf(ficha.getPerFor()));
-//                pst.setString(39, String.valueOf(ficha.getPerCon()));
-//                pst.setString(40, String.valueOf(ficha.getPerDex()));
-//                pst.setString(41, String.valueOf(ficha.getPerInt()));
-//                pst.setString(42, String.valueOf(ficha.getPerCar()));
-//                pst.setString(43, String.valueOf(ficha.getPerMen()));
-//
-//                pst.setString(44, String.valueOf(ficha.getAtr("REF").getExp()));
-//                pst.setString(45, String.valueOf(ficha.getAtr("EMS").getExp()));
-//                pst.setString(46, String.valueOf(ficha.getAtr("MAT").getExp()));
-//                pst.setString(47, String.valueOf(ficha.getAtr("MAN").getExp()));
-//                pst.setString(48, String.valueOf(ficha.getAtr("TRS").getExp()));
-//                pst.setString(49, String.valueOf(ficha.getAtr("ESP").getExp()));
-//                pst.setString(50, String.valueOf(ficha.getAtr("CDN").getExp()));
-//                pst.setString(51, String.valueOf(ficha.getAtr("TEN").getExp()));
-//                pst.setString(52, String.valueOf(ficha.getAtr("RYU").getExp()));
-//                pst.setString(53, String.valueOf(ficha.getAtr("AOP").getExp()));
-//                pst.setString(54, String.valueOf(ficha.getAtr("MOP").getExp()));
-//                pst.setString(55, String.valueOf(ficha.getAtr("ZTS").getExp()));
-//                pst.setString(56, String.valueOf(ficha.getAtr("EN").getExp()));
-//
-//                pst.setString(57, String.valueOf(ficha.getAtrRef()));
-//                pst.setString(58, String.valueOf(ficha.getAtrEms()));
-//                pst.setString(59, String.valueOf(ficha.getAtrMat()));
-//                pst.setString(60, String.valueOf(ficha.getAtrMan()));
-//                pst.setString(61, String.valueOf(ficha.getAtrTrs()));
-//                pst.setString(62, String.valueOf(ficha.getAtrEsp()));
-//                pst.setString(63, String.valueOf(ficha.getAtrCdn()));
-//                pst.setString(64, String.valueOf(ficha.getTen()));
-//                pst.setString(65, String.valueOf(ficha.getRyu()));
-//                pst.setString(66, String.valueOf(ficha.getAop()));
-//                pst.setString(67, String.valueOf(ficha.getMop()));
-//                pst.setString(68, String.valueOf(ficha.getZts()));
-//                pst.setString(69, String.valueOf(ficha.getEn()));
-//
-//                pst.setString(70, String.valueOf(ficha.getModCdn()));
-//                pst.setString(71, String.valueOf(ficha.getCoefHp()));
-//                pst.setString(72, String.valueOf(ficha.getLvl()));
-//                pst.setString(73, String.valueOf(ficha.getExp()));
-//                pst.setString(74, String.valueOf(ficha.getExpBonus()));
-//                pst.setString(75, String.valueOf(ficha.getLvlNen()));
-//                pst.setString(76, String.valueOf(ficha.getExpNen()));
-//                pst.setString(77, String.valueOf(ficha.getExpBonusNen()));
-//
-//                pst.setString(78, String.valueOf(ficha.getHpMax()));
-//                pst.setString(79, String.valueOf(ficha.getMopMax()));
-//                pst.setString(80, String.valueOf(ficha.getHpNegMax()));
-//
-//                pst.setString(81, String.valueOf(ficha.getHpAtual()));
-//                pst.setString(82, String.valueOf(ficha.getMopAtual()));
-//                pst.setString(83, String.valueOf(ficha.getHpNegAtual()));
-//
-//                pst.setString(84, String.valueOf(ficha.getIni()));
-//                pst.setString(85, String.valueOf(ficha.getEsq()));
-//                pst.setString(86, String.valueOf(ficha.getApr()));
-//                pst.setString(87, String.valueOf(ficha.getCrt()));
-//                pst.setString(88, String.valueOf(ficha.getVel()));
-//
-//                pst.setString(89, String.valueOf(ficha.getbIntCdn()));
-//                pst.setString(90, String.valueOf(ficha.getSorte()));
-//                pst.setString(91, String.valueOf(ficha.getSorteDiaria()));
-//                pst.setString(92, String.valueOf(ficha.getModClas()));
-//
-//                pst.setString(93, convertBtS(ficha.isSortePorLvl()));
-//                pst.setString(94, convertBtS(ficha.isPersonagemDeJogador()));
-//                pst.setString(95, convertBtS(ficha.isCriaturaDoMestre()));
-//
-//                pst.setString(96, String.valueOf(ficha.getPontosHeroicos()));
-//                pst.setString(97, String.valueOf(ficha.getPontosInspiracao()));
-//                pst.setString(98, String.valueOf(ficha.getShu()));
-//                pst.setString(99, String.valueOf(ficha.getStun()));
-//
-//                pst.setString(100, convertBtS(ficha.isDesmaiado()));
-//                
-//                pst.setString(101, ficha.getAtkPad());
-//                pst.setString(102, ficha.getDefPad());
-//
-//                pst.execute();
-//
-//            } catch (SQLException e) {
-//                System.out.println("falha no insert - ficha");
-//            }
-//
-//
-//            // habilidades
-//            for (String nomeHabilidade : ficha.getHabilidades().keySet()) {
-//                Habilidades skill = ficha.getHabilidade(nomeHabilidade);
-//                boolean existeSkill = false;
-//
-//                // analizando existencia de habilidade
-////                try {
-////                    sql = "select nomeHabilidade from habilidades where nick = " + nick;
-////                    pst = execute.prepareStatement(sql);
-////                    rs = pst.executeQuery();
-////                    // procurando a habilidade no banco
-////                    while (rs.next()) {
-////                        if (rs.getString(2).equals(nomeHabilidade)) {
-////                            existeSkill = true;
-////                            break;
-////                        }
-////                    }
-////                } catch (SQLException e) {
-////                    System.out.println("campo vazio - habilidades");
-////                }
-////                
-////                // se existe a habilidade, então deletemos ela para reinserir
-////                try {
-////                    if (existeSkill) {
-////                        sql = "delete from habilidades where nick = " + nick;
-////                        pst = execute.prepareStatement(sql);
-////                        pst.execute();
-////                    }
-////                } catch (SQLException e) {
-////                    System.out.println("nada foi deletado - habilidades");
-////                }
-//
-//                // inserindo habilidades
-//                try {
-//
-//                    sql = "insert into habilidades values(" +
-//                        "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                        "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                        "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                        "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                        "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                        "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                        "?, ?, ?, ?, ?, ?, ?)";
-//
-//                    pst = execute.prepareStatement(sql);
-//
-//                    pst.setString(1, ficha.getNick());
-//
-//                    pst.setString(2, skill.getNome());
-//                    pst.setString(3, skill.getArma());
-//                    pst.setString(4, skill.getDados());
-//                    pst.setString(5, skill.getProficiencia());
-//                    pst.setString(6, skill.getDescricao());
-//                    pst.setString(7, skill.getDescricaoBreve());
-//
-//                    pst.setString(8, String.valueOf(skill.getRestricao()));
-//                    pst.setString(9, String.valueOf(skill.getDano()));
-//                    pst.setString(10, String.valueOf(skill.getDanoPorSegundo()));
-//                    pst.setString(11, String.valueOf(skill.getAuraBonus()));
-//                    pst.setString(12, String.valueOf(skill.getTurnoDps()));
-//                    pst.setString(13, String.valueOf(skill.getDecrescimoDpsPorTurno()));
-//                    pst.setString(14, String.valueOf(skill.getQtd()));
-//                    pst.setString(15, String.valueOf(skill.getVol()));
-//                    pst.setString(16, String.valueOf(skill.getCrt()));
-//                    pst.setString(17, String.valueOf(skill.getDanoFixo()));
-//                    pst.setString(18, String.valueOf(skill.getAcertoFixo()));
-//                    pst.setString(19, String.valueOf(skill.getLvl()));
-//                    pst.setString(20, String.valueOf(skill.getSubLvl()));
-//                    pst.setString(21, String.valueOf(skill.getBonus()));
-//
-//                    pst.setString(22, String.valueOf(skill.getQtdFor()));
-//                    pst.setString(23, String.valueOf(skill.getQtdCon()));
-//                    pst.setString(24, String.valueOf(skill.getQtdDex()));
-//                    pst.setString(25, String.valueOf(skill.getQtdInt()));
-//                    pst.setString(26, String.valueOf(skill.getQtdCar()));
-//                    pst.setString(27, String.valueOf(skill.getQtdMen()));
-//                    pst.setString(28, String.valueOf(skill.getQtdRef()));
-//                    pst.setString(29, String.valueOf(skill.getQtdEms()));
-//                    pst.setString(30, String.valueOf(skill.getQtdMan()));
-//                    pst.setString(31, String.valueOf(skill.getQtdMat()));
-//                    pst.setString(32, String.valueOf(skill.getQtdTrs()));
-//                    pst.setString(33, String.valueOf(skill.getQtdEsp()));
-//                    pst.setString(34, String.valueOf(skill.getQtdEsq()));
-//                    pst.setString(35, String.valueOf(skill.getQtdVel()));
-//                    pst.setString(36, String.valueOf(skill.getQtdTen()));
-//                    pst.setString(37, String.valueOf(skill.getQtdAop()));
-//                    pst.setString(38, String.valueOf(skill.getQtdMop()));
-//                    pst.setString(39, String.valueOf(skill.getQtdCdn()));
-//
-//                    pst.setString(40, convertBtS(skill.isPerfurante()));
-//                    pst.setString(41, convertBtS(skill.isGastaAura()));
-//                    pst.setString(42, convertBtS(skill.isTrs()));
-//                    pst.setString(43, convertBtS(skill.isMat()));
-//                    pst.setString(44, convertBtS(skill.isMan()));
-//                    pst.setString(45, convertBtS(skill.isDps()));
-//                    pst.setString(46, convertBtS(skill.isRebote()));
-//
-//                    pst.setString(47, convertBtS(skill.isSomarFor()));
-//                    pst.setString(48, convertBtS(skill.isSomarCon()));
-//                    pst.setString(49, convertBtS(skill.isSomarDex()));
-//                    pst.setString(50, convertBtS(skill.isSomarInt()));
-//                    pst.setString(51, convertBtS(skill.isSomarCar()));
-//                    pst.setString(52, convertBtS(skill.isSomarMen()));
-//                    pst.setString(53, convertBtS(skill.isSomarRef()));
-//                    pst.setString(54, convertBtS(skill.isSomarEms()));
-//                    pst.setString(55, convertBtS(skill.isSomarMan()));
-//                    pst.setString(56, convertBtS(skill.isSomarMat()));
-//                    pst.setString(57, convertBtS(skill.isSomarTrs()));
-//                    pst.setString(58, convertBtS(skill.isSomarEsp()));
-//                    pst.setString(59, convertBtS(skill.isSomarEsq()));
-//                    pst.setString(60, convertBtS(skill.isSomarVel()));
-//                    pst.setString(61, convertBtS(skill.isSomarTen()));
-//                    pst.setString(62, convertBtS(skill.isSomarAop()));
-//                    pst.setString(63, convertBtS(skill.isSomarMop()));
-//                    pst.setString(64, convertBtS(skill.isSomarCdn()));
-//                    
-//                    pst.setString(65, String.valueOf(skill.getRyu()));
-//                    pst.setString(66, convertBtS(skill.isDanoRebote()));
-//                    pst.setString(67, convertBtS(skill.isGastaRyu()));
-//                    
-//                    pst.execute();
-//
-//                } catch (SQLException e) {
-//                    System.out.println("falha no insert - habilidades");
-//                }
-//
-//            }
-//
-//            // proficiencias
-//            for (String nomePro : ficha.getPro().keySet()) {
-//                LvlBonus pro = ficha.getPro().get(nomePro);
-//                boolean existePro = false;
-//
-//                // analizando existencia de proficiencias
-////                try {
-////                    sql = "select nomePro from pro where nick = " + nick;
-////                    pst = execute.prepareStatement(sql);
-////                    rs = pst.executeQuery();
-////                    // procurando a pericia no banco
-////                    while (rs.next()) {
-////                        if (rs.getString(2).equals(nomePro)) {
-////                            existePro = true;
-////                            break;
-////                        }
-////                    }
-////                } catch (SQLException e) {
-////                    System.out.println("campo vazio - pro");
-////                }
-////                
-////                // se existe a proficiencia, então deletemos ela para reinserir
-////                try {
-////                    if (existePro) {
-////                        sql = "delete from pro where nick = " + nick;
-////                        pst = execute.prepareStatement(sql);
-////                        pst.execute();
-////                    }
-////                } catch (SQLException e) {
-////                    System.out.println("nada foi deletado - pro");
-////                }
-//
-//                // inserindo proficiencias
-//                try {
-//                    sql = "insert into pro values(?, ?, ?, ?, ?)";
-//                    pst = execute.prepareStatement(sql);
-//                    pst.setString(1, ficha.getNick());
-//                    pst.setString(2, nomePro);
-//                    pst.setString(3, String.valueOf(pro.getLvl()));
-//                    pst.setString(4, String.valueOf(pro.getLvj()));
-//                    pst.setString(5, String.valueOf(pro.getBonus()));
-//                    
-//                    pst.execute();
-//
-//                } catch (SQLException e) {
-//                    System.out.println("nada foi inserido - pro");
-//                }
-//            }
-//
-//            // pericias
-//            for (String nomePer : ficha.getPer().keySet()) {
-//                LvlBonus per = ficha.getPer().get(nomePer);
-//                boolean existePer = false;
-//
-//                // analizando existencia de pericias
-////                try {
-////                    sql = "select nomePer from per where nick = " + nick;
-////                    pst = execute.prepareStatement(sql);
-////                    rs = pst.executeQuery();
-////                    // procurando a pericia no banco
-////                    while (rs.next()) {
-////                        if (rs.getString(2).equals(nomePer)) {
-////                            existePer = true;
-////                            break;
-////                        }
-////                    }
-////                } catch (SQLException e) {
-////                    System.out.println("campo vazio - per");
-////                }
-////                
-////                // se existe a pericia, então deletemos ela para reinserir
-////                try {
-////                    if (existePer) {
-////                        sql = "delete from per where nick = " + nick;
-////                        pst = execute.prepareStatement(sql);
-////                        pst.execute();
-////                    }
-////                } catch (SQLException e) {
-////                    System.out.println("nada foi deletado - per");
-////                }
-//
-//                // inserindo a pericia
-//                try {
-//                    sql = "insert into per values(?, ?, ?, ?, ?)";
-//                    pst = execute.prepareStatement(sql);
-//                    pst.setString(1, ficha.getNick());
-//                    pst.setString(2, nomePer);
-//                    pst.setString(3, String.valueOf(per.getLvl()));
-//                    pst.setString(4, String.valueOf(per.getLvj()));
-//                    pst.setString(5, String.valueOf(per.getBonus()));
-//                    
-//                    pst.execute();
-//
-//                } catch (SQLException e) {
-//                    System.out.println("nada foi inserido - per");
-//                }
-//            }
-//        }
-//
-//        try {
-//            execute.close();
-//        } catch (SQLException e) {
-//            System.out.println("erro ao fechar");
-//            System.out.println(e);
-//        }
-//
-//        return true;
-//    }
-    
-//    public static boolean saveFicha(Ficha ficha) {
-//        
-//        PreparedStatement pst;
-//        ResultSet rs;
-//        String sql;
-//        Connection execute = ModuloConexao.conector();
-//        
-//        // deletando a ficha atual do banco para nova inserção
-//        try {
-//            sql = "delete from pro where nick = ?";
-//            pst = execute.prepareStatement(sql);
-//            pst.setString(1, ficha.getNick());
-//            pst.execute();
-//            
-//            sql = "delete from per where nick = ?";
-//            pst = execute.prepareStatement(sql);
-//            pst.setString(1, ficha.getNick());
-//            pst.execute();
-//            
-//            sql = "delete from habilidades where nick = ?";
-//            pst = execute.prepareStatement(sql);
-//            pst.setString(1, ficha.getNick());
-//            pst.execute();
-//            
-//            sql = "delete from ficha where nick = ?";
-//            pst = execute.prepareStatement(sql);
-//            pst.setString(1, ficha.getNick());
-//            pst.execute();
-//        } catch (SQLException e) {
-//            System.err.println("NÃO FOI POSSIVEL LIMPAR O BANCO");
-//            System.err.println(e);
-//        }
-//        
-//
-//        // inserindo ficha
-//        try {
-//            sql = "insert into ficha values(" +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                "?, ?)";
-//
-//            pst = execute.prepareStatement(sql);
-//
-//            pst.setString(1, ficha.getNick());
-//            pst.setString(2, ficha.getNome());
-//            pst.setString(3, ficha.getClasse());
-//            pst.setString(4, ficha.getNen());
-//            pst.setString(5, ficha.getTendencia());
-//            pst.setString(6, ficha.getHunter());
-//
-//            pst.setString(7, String.valueOf(ficha.getDias()));
-//            pst.setString(8, String.valueOf(ficha.getAltura()));
-//            pst.setString(9, String.valueOf(ficha.getPeso()));
-//            pst.setString(10, String.valueOf(ficha.getIdade()));
-//
-//            pst.setString(11, ficha.getInventario());
-//            pst.setString(12, ficha.getDescricao());
-//            pst.setString(13, ficha.getDescricaoBreve());
-//
-//            pst.setString(14, String.valueOf(ficha.getIniFor()));
-//            pst.setString(15, String.valueOf(ficha.getIniCon()));
-//            pst.setString(16, String.valueOf(ficha.getIniDex()));
-//            pst.setString(17, String.valueOf(ficha.getIniInt()));
-//            pst.setString(18, String.valueOf(ficha.getIniCar()));
-//            pst.setString(19, String.valueOf(ficha.getIniMen()));
-//
-//            pst.setString(20, String.valueOf(ficha.getValFor()));
-//            pst.setString(21, String.valueOf(ficha.getValCon()));
-//            pst.setString(22, String.valueOf(ficha.getValDex()));
-//            pst.setString(23, String.valueOf(ficha.getValInt()));
-//            pst.setString(24, String.valueOf(ficha.getValCar()));
-//            pst.setString(25, String.valueOf(ficha.getValMen()));
-//
-//            pst.setString(26, String.valueOf(ficha.getModFor()));
-//            pst.setString(27, String.valueOf(ficha.getModCon()));
-//            pst.setString(28, String.valueOf(ficha.getModDex()));
-//            pst.setString(29, String.valueOf(ficha.getModInt()));
-//            pst.setString(30, String.valueOf(ficha.getModCar()));
-//            pst.setString(31, String.valueOf(ficha.getModMen()));
-//
-//            pst.setString(32, String.valueOf(ficha.getbFor()));
-//            pst.setString(33, String.valueOf(ficha.getbCon()));
-//            pst.setString(34, String.valueOf(ficha.getbDex()));
-//            pst.setString(35, String.valueOf(ficha.getbInt()));
-//            pst.setString(36, String.valueOf(ficha.getbCar()));
-//            pst.setString(37, String.valueOf(ficha.getbMen()));
-//
-//            pst.setString(38, String.valueOf(ficha.getPerFor()));
-//            pst.setString(39, String.valueOf(ficha.getPerCon()));
-//            pst.setString(40, String.valueOf(ficha.getPerDex()));
-//            pst.setString(41, String.valueOf(ficha.getPerInt()));
-//            pst.setString(42, String.valueOf(ficha.getPerCar()));
-//            pst.setString(43, String.valueOf(ficha.getPerMen()));
-//
-//            pst.setString(44, String.valueOf(ficha.getAtr("REF").getExp()));
-//            pst.setString(45, String.valueOf(ficha.getAtr("EMS").getExp()));
-//            pst.setString(46, String.valueOf(ficha.getAtr("MAT").getExp()));
-//            pst.setString(47, String.valueOf(ficha.getAtr("MAN").getExp()));
-//            pst.setString(48, String.valueOf(ficha.getAtr("TRS").getExp()));
-//            pst.setString(49, String.valueOf(ficha.getAtr("ESP").getExp()));
-//            pst.setString(50, String.valueOf(ficha.getAtr("CDN").getExp()));
-//            pst.setString(51, String.valueOf(ficha.getAtr("TEN").getExp()));
-//            pst.setString(52, String.valueOf(ficha.getAtr("RYU").getExp()));
-//            pst.setString(53, String.valueOf(ficha.getAtr("AOP").getExp()));
-//            pst.setString(54, String.valueOf(ficha.getAtr("MOP").getExp()));
-//            pst.setString(55, String.valueOf(ficha.getAtr("ZTS").getExp()));
-//            pst.setString(56, String.valueOf(ficha.getAtr("EN").getExp()));
-//
-//            pst.setString(57, String.valueOf(ficha.getAtrRef()));
-//            pst.setString(58, String.valueOf(ficha.getAtrEms()));
-//            pst.setString(59, String.valueOf(ficha.getAtrMat()));
-//            pst.setString(60, String.valueOf(ficha.getAtrMan()));
-//            pst.setString(61, String.valueOf(ficha.getAtrTrs()));
-//            pst.setString(62, String.valueOf(ficha.getAtrEsp()));
-//            pst.setString(63, String.valueOf(ficha.getAtrCdn()));
-//            pst.setString(64, String.valueOf(ficha.getTen()));
-//            pst.setString(65, String.valueOf(ficha.getRyu()));
-//            pst.setString(66, String.valueOf(ficha.getAop()));
-//            pst.setString(67, String.valueOf(ficha.getMop()));
-//            pst.setString(68, String.valueOf(ficha.getZts()));
-//            pst.setString(69, String.valueOf(ficha.getEn()));
-//
-//            pst.setString(70, String.valueOf(ficha.getModCdn()));
-//            pst.setString(71, String.valueOf(ficha.getCoefHp()));
-//            pst.setString(72, String.valueOf(ficha.getLvl()));
-//            pst.setString(73, String.valueOf(ficha.getExp()));
-//            pst.setString(74, String.valueOf(ficha.getExpBonus()));
-//            pst.setString(75, String.valueOf(ficha.getLvlNen()));
-//            pst.setString(76, String.valueOf(ficha.getExpNen()));
-//            pst.setString(77, String.valueOf(ficha.getExpBonusNen()));
-//
-//            pst.setString(78, String.valueOf(ficha.getHpMax()));
-//            pst.setString(79, String.valueOf(ficha.getMopMax()));
-//            pst.setString(80, String.valueOf(ficha.getHpNegMax()));
-//
-//            pst.setString(81, String.valueOf(ficha.getHpAtual()));
-//            pst.setString(82, String.valueOf(ficha.getMopAtual()));
-//            pst.setString(83, String.valueOf(ficha.getHpNegAtual()));
-//
-//            pst.setString(84, String.valueOf(ficha.getIni()));
-//            pst.setString(85, String.valueOf(ficha.getEsq()));
-//            pst.setString(86, String.valueOf(ficha.getApr()));
-//            pst.setString(87, String.valueOf(ficha.getCrt()));
-//            pst.setString(88, String.valueOf(ficha.getVel()));
-//
-//            pst.setString(89, String.valueOf(ficha.getbIntCdn()));
-//            pst.setString(90, String.valueOf(ficha.getSorte()));
-//            pst.setString(91, String.valueOf(ficha.getSorteDiaria()));
-//            pst.setString(92, String.valueOf(ficha.getModClas()));
-//
-//            pst.setString(93, convertBtS(ficha.isSortePorLvl()));
-//            pst.setString(94, convertBtS(ficha.isPersonagemDeJogador()));
-//            pst.setString(95, convertBtS(ficha.isCriaturaDoMestre()));
-//
-//            pst.setString(96, String.valueOf(ficha.getPontosHeroicos()));
-//            pst.setString(97, String.valueOf(ficha.getPontosInspiracao()));
-//            pst.setString(98, String.valueOf(ficha.getShu()));
-//            pst.setString(99, String.valueOf(ficha.getStun()));
-//
-//            pst.setString(100, convertBtS(ficha.isDesmaiado()));
-//
-//            pst.setString(101, ficha.getAtkPad());
-//            pst.setString(102, ficha.getDefPad());
-//
-//            pst.execute();
-//
-//        } catch (SQLException e) {
-//            System.out.println("falha no insert - ficha");
-//        }
-//
-//
-//        // habilidades
-//        for (String nomeHabilidade : ficha.getHabilidades().keySet()) {
-//            Habilidades skill = ficha.getHabilidade(nomeHabilidade);
-//
-//            // inserindo habilidades
-//            try {
-//
-//                sql = "insert into habilidades values(" +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-//                    "?, ?, ?, ?, ?, ?, ?)";
-//
-//                pst = execute.prepareStatement(sql);
-//
-//                pst.setString(1, ficha.getNick());
-//
-//                pst.setString(2, skill.getNome());
-//                pst.setString(3, skill.getArma());
-//                pst.setString(4, skill.getDados());
-//                pst.setString(5, skill.getProficiencia());
-//                pst.setString(6, skill.getDescricao());
-//                pst.setString(7, skill.getDescricaoBreve());
-//
-//                pst.setString(8, String.valueOf(skill.getRestricao()));
-//                pst.setString(9, String.valueOf(skill.getDano()));
-//                pst.setString(10, String.valueOf(skill.getDanoPorSegundo()));
-//                pst.setString(11, String.valueOf(skill.getAuraBonus()));
-//                pst.setString(12, String.valueOf(skill.getTurnoDps()));
-//                pst.setString(13, String.valueOf(skill.getDecrescimoDpsPorTurno()));
-//                pst.setString(14, String.valueOf(skill.getQtd()));
-//                pst.setString(15, String.valueOf(skill.getVol()));
-//                pst.setString(16, String.valueOf(skill.getCrt()));
-//                pst.setString(17, String.valueOf(skill.getDanoFixo()));
-//                pst.setString(18, String.valueOf(skill.getAcertoFixo()));
-//                pst.setString(19, String.valueOf(skill.getLvl()));
-//                pst.setString(20, String.valueOf(skill.getSubLvl()));
-//                pst.setString(21, String.valueOf(skill.getBonus()));
-//
-//                pst.setString(22, String.valueOf(skill.getQtdFor()));
-//                pst.setString(23, String.valueOf(skill.getQtdCon()));
-//                pst.setString(24, String.valueOf(skill.getQtdDex()));
-//                pst.setString(25, String.valueOf(skill.getQtdInt()));
-//                pst.setString(26, String.valueOf(skill.getQtdCar()));
-//                pst.setString(27, String.valueOf(skill.getQtdMen()));
-//                pst.setString(28, String.valueOf(skill.getQtdRef()));
-//                pst.setString(29, String.valueOf(skill.getQtdEms()));
-//                pst.setString(30, String.valueOf(skill.getQtdMan()));
-//                pst.setString(31, String.valueOf(skill.getQtdMat()));
-//                pst.setString(32, String.valueOf(skill.getQtdTrs()));
-//                pst.setString(33, String.valueOf(skill.getQtdEsp()));
-//                pst.setString(34, String.valueOf(skill.getQtdEsq()));
-//                pst.setString(35, String.valueOf(skill.getQtdVel()));
-//                pst.setString(36, String.valueOf(skill.getQtdTen()));
-//                pst.setString(37, String.valueOf(skill.getQtdAop()));
-//                pst.setString(38, String.valueOf(skill.getQtdMop()));
-//                pst.setString(39, String.valueOf(skill.getQtdCdn()));
-//
-//                pst.setString(40, convertBtS(skill.isPerfurante()));
-//                pst.setString(41, convertBtS(skill.isGastaAura()));
-//                pst.setString(42, convertBtS(skill.isTrs()));
-//                pst.setString(43, convertBtS(skill.isMat()));
-//                pst.setString(44, convertBtS(skill.isMan()));
-//                pst.setString(45, convertBtS(skill.isDps()));
-//                pst.setString(46, convertBtS(skill.isRebote()));
-//
-//                pst.setString(47, convertBtS(skill.isSomarFor()));
-//                pst.setString(48, convertBtS(skill.isSomarCon()));
-//                pst.setString(49, convertBtS(skill.isSomarDex()));
-//                pst.setString(50, convertBtS(skill.isSomarInt()));
-//                pst.setString(51, convertBtS(skill.isSomarCar()));
-//                pst.setString(52, convertBtS(skill.isSomarMen()));
-//                pst.setString(53, convertBtS(skill.isSomarRef()));
-//                pst.setString(54, convertBtS(skill.isSomarEms()));
-//                pst.setString(55, convertBtS(skill.isSomarMan()));
-//                pst.setString(56, convertBtS(skill.isSomarMat()));
-//                pst.setString(57, convertBtS(skill.isSomarTrs()));
-//                pst.setString(58, convertBtS(skill.isSomarEsp()));
-//                pst.setString(59, convertBtS(skill.isSomarEsq()));
-//                pst.setString(60, convertBtS(skill.isSomarVel()));
-//                pst.setString(61, convertBtS(skill.isSomarTen()));
-//                pst.setString(62, convertBtS(skill.isSomarAop()));
-//                pst.setString(63, convertBtS(skill.isSomarMop()));
-//                pst.setString(64, convertBtS(skill.isSomarCdn()));
-//
-//                pst.setString(65, String.valueOf(skill.getRyu()));
-//                pst.setString(66, convertBtS(skill.isDanoRebote()));
-//                pst.setString(67, convertBtS(skill.isGastaRyu()));
-//
-//                pst.execute();
-//
-//            } catch (SQLException e) {
-//                System.out.println("falha no insert - habilidades");
-//            }
-//
-//        }
-//
-//        // proficiencias
-//        for (String nomePro : ficha.getPro().keySet()) {
-//            LvlBonus pro = ficha.getPro().get(nomePro);
-//
-//            // inserindo proficiencias
-//            try {
-//                sql = "insert into pro values(?, ?, ?, ?, ?)";
-//                pst = execute.prepareStatement(sql);
-//                pst.setString(1, ficha.getNick());
-//                pst.setString(2, nomePro);
-//                pst.setString(3, String.valueOf(pro.getLvl()));
-//                pst.setString(4, String.valueOf(pro.getLvj()));
-//                pst.setString(5, String.valueOf(pro.getBonus()));
-//
-//                pst.execute();
-//
-//            } catch (SQLException e) {
-//                System.out.println("nada foi inserido - pro");
-//            }
-//        }
-//
-//        // pericias
-//        for (String nomePer : ficha.getPer().keySet()) {
-//            LvlBonus per = ficha.getPer().get(nomePer);
-//
-//            // inserindo a pericia
-//            try {
-//                sql = "insert into per values(?, ?, ?, ?, ?)";
-//                pst = execute.prepareStatement(sql);
-//                pst.setString(1, ficha.getNick());
-//                pst.setString(2, nomePer);
-//                pst.setString(3, String.valueOf(per.getLvl()));
-//                pst.setString(4, String.valueOf(per.getLvj()));
-//                pst.setString(5, String.valueOf(per.getBonus()));
-//
-//                pst.execute();
-//
-//            } catch (SQLException e) {
-//                System.out.println("nada foi inserido - per");
-//            }
-//        }
-//
-//        try {
-//            execute.close();
-//        } catch (SQLException e) {
-//            System.out.println("erro ao fechar");
-//            System.out.println(e);
-//        }
-//
-//        return true;
-//    }
+    public static boolean saveFicha(Ficha ficha) {
+        PreparedStatement pst;
+        String sql;
+        Connection execute = ModuloConexao.postgresConector();
+
+        // inserindo ficha
+        try {
+            sql = "insert into ficha (" +
+                "nick, nome, classe, nen, tendencia, hunter," +
+                "dias, altura, peso, idade," +
+                "inventario, descricao, descricaobreve," +
+                "iniFor, iniCon, iniDex, iniInt, iniCar, iniMen," +
+                "valFor, valCon, valDex, valInt, valCar, valMen," +
+                "modFor, modCon, modDex, modInt, modCar, modMen," +
+                "bFor, bCon, bDex, bInt, bCar, bMen," +
+                "perFor, perCon, perDex, perInt, perCar, perMen," +
+                "expRef, expEms, expMat, expMan, expTrs, expEsp," +
+                "expCdn, expTen, expRyu, expAop, expMop, expZts, expEn," +
+                "lvlRef, lvlEms, lvlMat, lvlMan, lvlTrs, lvlEsp," +
+                "lvlCdn, lvlTen, lvlRyu, lvlAop, lvlMop, lvlZts, lvlEn," +
+                "modCdn, coefHp, lvl, exp, expBonus, lvlNen, expNen, expBonusNen," +
+                "hpMax, mopMax, hpNegMax, hpAtual, mopAtual, hpNegAtual," +
+                "ini, esq, apr, crt, vel," +
+                "bIntCdn, sorte, sorteDiaria, modClas, sortePorLvl," +
+                "personagemDeJogador, criaturaDoMestre," +
+                "pontosHeroicos, pontosInspiracao," +
+                "shu, stun, desmaiado, atkPad, defPad" +
+                ") values (" +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?)";
+
+            pst = execute.prepareStatement(sql);
+
+            pst.setString(1, ficha.getNick());
+            pst.setString(2, ficha.getNome());
+            pst.setString(3, ficha.getClasse());
+            pst.setString(4, ficha.getNen());
+            pst.setString(5, ficha.getTendencia());
+            pst.setString(6, ficha.getHunter());
+
+            pst.setDouble(7, ficha.getDias());
+            pst.setDouble(8, ficha.getAltura());
+            pst.setDouble(9, ficha.getPeso());
+            pst.setInt(10, ficha.getIdade());
+
+            pst.setString(11, ficha.getInventario());
+            pst.setString(12, ficha.getDescricao());
+            pst.setString(13, ficha.getDescricaoBreve());
+
+            pst.setInt(14, ficha.getIniFor());
+            pst.setInt(15, ficha.getIniCon());
+            pst.setInt(16, ficha.getIniDex());
+            pst.setInt(17, ficha.getIniInt());
+            pst.setInt(18, ficha.getIniCar());
+            pst.setInt(19, ficha.getIniMen());
+
+            pst.setInt(20, ficha.getValFor());
+            pst.setInt(21, ficha.getValCon());
+            pst.setInt(22, ficha.getValDex());
+            pst.setInt(23, ficha.getValInt());
+            pst.setInt(24, ficha.getValCar());
+            pst.setInt(25, ficha.getValMen());
+
+            pst.setInt(26, ficha.getModFor());
+            pst.setInt(27, ficha.getModCon());
+            pst.setInt(28, ficha.getModDex());
+            pst.setInt(29, ficha.getModInt());
+            pst.setInt(30, ficha.getModCar());
+            pst.setInt(31, ficha.getModMen());
+
+            pst.setInt(32, ficha.getbFor());
+            pst.setInt(33, ficha.getbCon());
+            pst.setInt(34, ficha.getbDex());
+            pst.setInt(35, ficha.getbInt());
+            pst.setInt(36, ficha.getbCar());
+            pst.setInt(37, ficha.getbMen());
+
+            pst.setInt(38, ficha.getPerFor());
+            pst.setInt(39, ficha.getPerCon());
+            pst.setInt(40, ficha.getPerDex());
+            pst.setInt(41, ficha.getPerInt());
+            pst.setInt(42, ficha.getPerCar());
+            pst.setInt(43, ficha.getPerMen());
+
+            pst.setInt(44, ficha.getAtr("REF").getExp());
+            pst.setInt(45, ficha.getAtr("EMS").getExp());
+            pst.setInt(46, ficha.getAtr("MAT").getExp());
+            pst.setInt(47, ficha.getAtr("MAN").getExp());
+            pst.setInt(48, ficha.getAtr("TRS").getExp());
+            pst.setInt(49, ficha.getAtr("ESP").getExp());
+            pst.setInt(50, ficha.getAtr("CDN").getExp());
+            pst.setInt(51, ficha.getAtr("TEN").getExp());
+            pst.setInt(52, ficha.getAtr("RYU").getExp());
+            pst.setInt(53, ficha.getAtr("AOP").getExp());
+            pst.setInt(54, ficha.getAtr("MOP").getExp());
+            pst.setInt(55, ficha.getAtr("ZTS").getExp());
+            pst.setInt(56, ficha.getAtr("EN").getExp());
+
+            pst.setInt(57, ficha.getAtrRef());
+            pst.setInt(58, ficha.getAtrEms());
+            pst.setInt(59, ficha.getAtrMat());
+            pst.setInt(60, ficha.getAtrMan());
+            pst.setInt(61, ficha.getAtrTrs());
+            pst.setInt(62, ficha.getAtrEsp());
+            pst.setInt(63, ficha.getAtrCdn());
+            pst.setInt(64, ficha.getTen());
+            pst.setInt(65, ficha.getRyu());
+            pst.setInt(66, ficha.getAop());
+            pst.setInt(67, ficha.getMop());
+            pst.setInt(68, ficha.getZts());
+            pst.setInt(69, ficha.getEn());
+
+            pst.setInt(70, ficha.getModCdn());
+            pst.setInt(71, ficha.getCoefHp());
+            pst.setInt(72, ficha.getLvl());
+            pst.setInt(73, ficha.getExp());
+            pst.setInt(74, ficha.getExpBonus());
+            pst.setInt(75, ficha.getLvlNen());
+            pst.setInt(76, ficha.getExpNen());
+            pst.setInt(77, ficha.getExpBonusNen());
+
+            pst.setInt(78, ficha.getHpMax());
+            pst.setInt(79, ficha.getMopMax());
+            pst.setInt(80, ficha.getHpNegMax());
+
+            pst.setInt(81, ficha.getHpAtual());
+            pst.setInt(82, ficha.getMopAtual());
+            pst.setInt(83, ficha.getHpNegAtual());
+
+            pst.setInt(84, ficha.getIni());
+            pst.setInt(85, ficha.getEsq());
+            pst.setInt(86, ficha.getApr());
+            pst.setInt(87, ficha.getCrt());
+            pst.setInt(88, ficha.getVel());
+
+            pst.setInt(89, ficha.getbIntCdn());
+            pst.setInt(90, ficha.getSorte());
+            pst.setInt(91, ficha.getSorteDiaria());
+            pst.setDouble(92, ficha.getModClas());
+
+            pst.setBoolean(93, ficha.isSortePorLvl());
+            pst.setBoolean(94, ficha.isPersonagemDeJogador());
+            pst.setBoolean(95, ficha.isCriaturaDoMestre());
+
+            pst.setInt(96, ficha.getPontosHeroicos());
+            pst.setInt(97, ficha.getPontosInspiracao());
+            pst.setInt(98, ficha.getShu());
+            pst.setInt(99, ficha.getStun());
+
+            pst.setBoolean(100, ficha.isDesmaiado());
+
+            pst.setString(101, ficha.getAtkPad());
+            pst.setString(102, ficha.getDefPad());
+
+            pst.execute();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            System.out.println("falha no insert - ficha");
+        }
+
+
+        // habilidades
+        for (String nomeHabilidade : ficha.getHabilidades().keySet()) {
+            Habilidades skill = ficha.getHabilidade(nomeHabilidade);
+
+            // inserindo habilidades
+            try {
+
+                sql = "INSERT INTO habilidades (" +
+                    "nick, nomeHabilidade, arma, dados, proficiencia," +
+                    "descricao, descricaobreve, restricao, dano, danoPorSegundo," +
+                    "auraBonus, turnoDps, decrescimoDpsPorTurno," +
+                    "qtd, vol, crt, danoFixo, acertoFixo, lvl, subLvl, bonus," +
+                    "qtdFor, qtdCon, qtdDex, qtdInt, qtdCar, qtdMen," +
+                    "qtdRef, qtdEms, qtdMan, qtdMat, qtdTrs, qtdEsp," +
+                    "qtdEsq, qtdVel, qtdTen, qtdAop, qtdMop, qtdCdn," +
+                    "perfurante, gastaAura, trs, mat, man, dps, rebote," +
+                    "somarFor, somarCon, somarDex, somarInt, somarCar, somarMen," +
+                    "somarRef, somarEms, somarMan, somarMat, somarTrs, somarEsp," +
+                    "somarEsq, somarVel, somarTen, somarAop, somarMop, somarCdn," +
+                    "ryu, danoRebote, gastaRyu" +
+                    ") VALUES(" +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?)";
+
+                pst = execute.prepareStatement(sql);
+
+                pst.setString(1, ficha.getNick());
+
+                pst.setString(2, skill.getNome());
+                pst.setString(3, skill.getArma());
+                pst.setString(4, skill.getDados());
+                pst.setString(5, skill.getProficiencia());
+                pst.setString(6, skill.getDescricao());
+                pst.setString(7, skill.getDescricaoBreve());
+
+                pst.setDouble(8, skill.getRestricao());
+                pst.setInt(9, skill.getDano());
+                pst.setInt(10, skill.getDanoPorSegundo());
+                pst.setInt(11, skill.getAuraBonus());
+                pst.setInt(12, skill.getTurnoDps());
+                pst.setInt(13, skill.getDecrescimoDpsPorTurno());
+                pst.setInt(14, skill.getQtd());
+                pst.setInt(15, skill.getVol());
+                pst.setInt(16, skill.getCrt());
+                pst.setInt(16, skill.getCrt());
+                pst.setInt(17, skill.getDanoFixo());
+                pst.setInt(18, skill.getAcertoFixo());
+                pst.setInt(19, skill.getLvl());
+                pst.setInt(20, skill.getSubLvl());
+                pst.setInt(21, skill.getBonus());
+
+                pst.setInt(22, skill.getQtdFor());
+                pst.setInt(23, skill.getQtdCon());
+                pst.setInt(24, skill.getQtdDex());
+                pst.setInt(25, skill.getQtdInt());
+                pst.setInt(26, skill.getQtdCar());
+                pst.setInt(27, skill.getQtdMen());
+                pst.setInt(28, skill.getQtdRef());
+                pst.setInt(29, skill.getQtdEms());
+                pst.setInt(30, skill.getQtdMan());
+                pst.setInt(31, skill.getQtdMat());
+                pst.setInt(32, skill.getQtdTrs());
+                pst.setInt(33, skill.getQtdEsp());
+                pst.setInt(34, skill.getQtdEsq());
+                pst.setInt(35, skill.getQtdVel());
+                pst.setInt(36, skill.getQtdTen());
+                pst.setInt(37, skill.getQtdAop());
+                pst.setInt(38, skill.getQtdMop());
+                pst.setInt(39, skill.getQtdCdn());
+
+                pst.setBoolean(40, skill.isPerfurante());
+                pst.setBoolean(41, skill.isGastaAura());
+                pst.setBoolean(42, skill.isTrs());
+                pst.setBoolean(43, skill.isMat());
+                pst.setBoolean(44, skill.isMan());
+                pst.setBoolean(45, skill.isDps());
+                pst.setBoolean(46, skill.isRebote());
+
+                pst.setBoolean(47, skill.isSomarFor());
+                pst.setBoolean(48, skill.isSomarCon());
+                pst.setBoolean(49, skill.isSomarDex());
+                pst.setBoolean(50, skill.isSomarInt());
+                pst.setBoolean(51, skill.isSomarCar());
+                pst.setBoolean(52, skill.isSomarMen());
+                pst.setBoolean(53, skill.isSomarRef());
+                pst.setBoolean(54, skill.isSomarEms());
+                pst.setBoolean(55, skill.isSomarMan());
+                pst.setBoolean(56, skill.isSomarMat());
+                pst.setBoolean(57, skill.isSomarTrs());
+                pst.setBoolean(58, skill.isSomarEsp());
+                pst.setBoolean(59, skill.isSomarEsq());
+                pst.setBoolean(60, skill.isSomarVel());
+                pst.setBoolean(61, skill.isSomarTen());
+                pst.setBoolean(62, skill.isSomarAop());
+                pst.setBoolean(64, skill.isSomarCdn());
+
+                pst.setInt(65, skill.getRyu());
+                pst.setBoolean(66, skill.isDanoRebote());
+                pst.setBoolean(67, skill.isGastaRyu());
+
+                pst.execute();
+
+            } catch (SQLException e) {
+                System.out.println("falha no insert - habilidades");
+            }
+        }
+
+        // proficiencias
+        for (String nomePro : ficha.getPro().keySet()) {
+            LvlBonus pro = ficha.getPro().get(nomePro);
+
+            // inserindo proficiencias
+            try {
+                sql = "INSERT INTO pro " +
+                "(nick, nomePro, lvl, lvj, bonus) " +
+                "VALUES (?, ?, ?, ?, ?)";
+                pst = execute.prepareStatement(sql);
+                pst.setString(1, ficha.getNick());
+                pst.setString(2, nomePro);
+                pst.setInt(3, pro.getLvl());
+                pst.setInt(4, pro.getLvj());
+                pst.setInt(5, pro.getBonus());
+
+                pst.execute();
+
+            } catch (SQLException e) {
+                System.out.println(e);
+                System.out.println("nada foi inserido - pro");
+            }
+        }
+
+        // pericias
+        for (String nomePer : ficha.getPer().keySet()) {
+            LvlBonus per = ficha.getPer().get(nomePer);
+
+            // inserindo a pericia
+            try {
+                sql = "INSERT INTO per " +
+                "(nick, nomePer, lvl, lvj, bonus) " +
+                "VALUES (?, ?, ?, ?, ?)";
+                pst = execute.prepareStatement(sql);
+                pst.setString(1, ficha.getNick());
+                pst.setString(2, nomePer);
+                pst.setInt(3, per.getLvl());
+                pst.setInt(4, per.getLvj());
+                pst.setInt(5, per.getBonus());
+
+                pst.execute();
+
+            } catch (SQLException e) {
+                System.out.println("nada foi inserido - per");
+            }
+        }
+
+        try {
+            execute.close();
+        } catch (SQLException e) {
+            System.out.println("erro ao fechar");
+            System.out.println(e);
+        }
+
+        return true;
+    }
     
     public static boolean saveFicha(File folder) throws ClassNotFoundException {
         try (ObjectOutputStream oos = new ObjectOutputStream(
@@ -1356,6 +934,13 @@ public class AlgoritmoPrincipal {
         for (String nick : fichas.keySet()) {
             ficha = fichas.get(nick);
             saveFicha(folder);
+        }
+    }
+
+    public static void saveFichas() throws ClassNotFoundException {
+        for (String nick : fichas.keySet()) {
+            ficha = fichas.get(nick);
+            saveFicha(ficha);
         }
     }
     
@@ -1384,6 +969,354 @@ public class AlgoritmoPrincipal {
     public static void replaceFicha(String nick, Ficha ficha) {
         AlgoritmoPrincipal.fichas.remove(nick);
         AlgoritmoPrincipal.fichas.put(ficha.getNick(), ficha);
+    }
+    
+    public static boolean updateFicha(Ficha ficha) {
+        PreparedStatement pst;
+        String sql;
+        Connection execute = ModuloConexao.postgresConector();
+
+        // atualizando ficha
+        try {
+            sql = "UPDATE ficha SET (" +
+                "nome, classe, nen, tendencia, hunter," +
+                "dias, altura, peso, idade," +
+                "inventario, descricao, descricaobreve," +
+                "iniFor, iniCon, iniDex, iniInt, iniCar, iniMen," +
+                "valFor, valCon, valDex, valInt, valCar, valMen," +
+                "modFor, modCon, modDex, modInt, modCar, modMen," +
+                "bFor, bCon, bDex, bInt, bCar, bMen," +
+                "perFor, perCon, perDex, perInt, perCar, perMen," +
+                "expRef, expEms, expMat, expMan, expTrs, expEsp," +
+                "expCdn, expTen, expRyu, expAop, expMop, expZts, expEn," +
+                "lvlRef, lvlEms, lvlMat, lvlMan, lvlTrs, lvlEsp," +
+                "lvlCdn, lvlTen, lvlRyu, lvlAop, lvlMop, lvlZts, lvlEn," +
+                "modCdn, coefHp, lvl, exp, expBonus, lvlNen, expNen, expBonusNen," +
+                "hpMax, mopMax, hpNegMax, hpAtual, mopAtual, hpNegAtual," +
+                "ini, esq, apr, crt, vel," +
+                "bIntCdn, sorte, sorteDiaria, modClas, sortePorLvl," +
+                "personagemDeJogador, criaturaDoMestre," +
+                "pontosHeroicos, pontosInspiracao," +
+                "shu, stun, desmaiado, atkPad, defPad" +
+                ") = (" +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?) WHERE nick = ?";
+
+            pst = execute.prepareStatement(sql);
+
+            pst.setString(1, ficha.getNome());
+            pst.setString(2, ficha.getClasse());
+            pst.setString(3, ficha.getNen());
+            pst.setString(4, ficha.getTendencia());
+            pst.setString(5, ficha.getHunter());
+
+            pst.setDouble(6, ficha.getDias());
+            pst.setDouble(7, ficha.getAltura());
+            pst.setDouble(8, ficha.getPeso());
+            pst.setInt(9, ficha.getIdade());
+
+            pst.setString(10, ficha.getInventario());
+            pst.setString(11, ficha.getDescricao());
+            pst.setString(12, ficha.getDescricaoBreve());
+
+            pst.setInt(13, ficha.getIniFor());
+            pst.setInt(14, ficha.getIniCon());
+            pst.setInt(15, ficha.getIniDex());
+            pst.setInt(16, ficha.getIniInt());
+            pst.setInt(17, ficha.getIniCar());
+            pst.setInt(18, ficha.getIniMen());
+
+            pst.setInt(19, ficha.getValFor());
+            pst.setInt(20, ficha.getValCon());
+            pst.setInt(21, ficha.getValDex());
+            pst.setInt(22, ficha.getValInt());
+            pst.setInt(23, ficha.getValCar());
+            pst.setInt(24, ficha.getValMen());
+
+            pst.setInt(25, ficha.getModFor());
+            pst.setInt(26, ficha.getModCon());
+            pst.setInt(27, ficha.getModDex());
+            pst.setInt(28, ficha.getModInt());
+            pst.setInt(29, ficha.getModCar());
+            pst.setInt(30, ficha.getModMen());
+
+            pst.setInt(31, ficha.getbFor());
+            pst.setInt(32, ficha.getbCon());
+            pst.setInt(33, ficha.getbDex());
+            pst.setInt(34, ficha.getbInt());
+            pst.setInt(35, ficha.getbCar());
+            pst.setInt(36, ficha.getbMen());
+
+            pst.setInt(37, ficha.getPerFor());
+            pst.setInt(38, ficha.getPerCon());
+            pst.setInt(39, ficha.getPerDex());
+            pst.setInt(40, ficha.getPerInt());
+            pst.setInt(41, ficha.getPerCar());
+            pst.setInt(42, ficha.getPerMen());
+
+            pst.setInt(43, ficha.getAtr("REF").getExp());
+            pst.setInt(44, ficha.getAtr("EMS").getExp());
+            pst.setInt(45, ficha.getAtr("MAT").getExp());
+            pst.setInt(46, ficha.getAtr("MAN").getExp());
+            pst.setInt(47, ficha.getAtr("TRS").getExp());
+            pst.setInt(48, ficha.getAtr("ESP").getExp());
+            pst.setInt(49, ficha.getAtr("CDN").getExp());
+            pst.setInt(50, ficha.getAtr("TEN").getExp());
+            pst.setInt(51, ficha.getAtr("RYU").getExp());
+            pst.setInt(52, ficha.getAtr("AOP").getExp());
+            pst.setInt(53, ficha.getAtr("MOP").getExp());
+            pst.setInt(54, ficha.getAtr("ZTS").getExp());
+            pst.setInt(55, ficha.getAtr("EN").getExp());
+
+            pst.setInt(56, ficha.getAtrRef());
+            pst.setInt(57, ficha.getAtrEms());
+            pst.setInt(58, ficha.getAtrMat());
+            pst.setInt(59, ficha.getAtrMan());
+            pst.setInt(60, ficha.getAtrTrs());
+            pst.setInt(61, ficha.getAtrEsp());
+            pst.setInt(62, ficha.getAtrCdn());
+            pst.setInt(63, ficha.getTen());
+            pst.setInt(64, ficha.getRyu());
+            pst.setInt(65, ficha.getAop());
+            pst.setInt(66, ficha.getMop());
+            pst.setInt(67, ficha.getZts());
+            pst.setInt(68, ficha.getEn());
+
+            pst.setInt(69, ficha.getModCdn());
+            pst.setInt(70, ficha.getCoefHp());
+            pst.setInt(71, ficha.getLvl());
+            pst.setInt(72, ficha.getExp());
+            pst.setInt(73, ficha.getExpBonus());
+            pst.setInt(74, ficha.getLvlNen());
+            pst.setInt(75, ficha.getExpNen());
+            pst.setInt(76, ficha.getExpBonusNen());
+
+            pst.setInt(77, ficha.getHpMax());
+            pst.setInt(78, ficha.getMopMax());
+            pst.setInt(79, ficha.getHpNegMax());
+
+            pst.setInt(80, ficha.getHpAtual());
+            pst.setInt(81, ficha.getMopAtual());
+            pst.setInt(82, ficha.getHpNegAtual());
+
+            pst.setInt(83, ficha.getIni());
+            pst.setInt(84, ficha.getEsq());
+            pst.setInt(85, ficha.getApr());
+            pst.setInt(86, ficha.getCrt());
+            pst.setInt(87, ficha.getVel());
+
+            pst.setInt(88, ficha.getbIntCdn());
+            pst.setInt(89, ficha.getSorte());
+            pst.setInt(90, ficha.getSorteDiaria());
+            pst.setDouble(91, ficha.getModClas());
+
+            pst.setBoolean(92, ficha.isSortePorLvl());
+            pst.setBoolean(93, ficha.isPersonagemDeJogador());
+            pst.setBoolean(94, ficha.isCriaturaDoMestre());
+
+            pst.setInt(95, ficha.getPontosHeroicos());
+            pst.setInt(96, ficha.getPontosInspiracao());
+            pst.setInt(97, ficha.getShu());
+            pst.setInt(98, ficha.getStun());
+
+            pst.setBoolean(99, ficha.isDesmaiado());
+
+            pst.setString(100, ficha.getAtkPad());
+            pst.setString(101, ficha.getDefPad());
+
+            
+            pst.setString(102, ficha.getNick());
+
+            pst.execute();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            System.out.println("falha no update - ficha");
+        }
+
+
+        // habilidades
+        for (String nomeHabilidade : ficha.getHabilidades().keySet()) {
+            Habilidades skill = ficha.getHabilidade(nomeHabilidade);
+
+            // atualizando habilidades
+            try {
+
+                sql = "UPDATE habilidades SET (" +
+                    "nomeHabilidade, arma, dados, proficiencia," +
+                    "descricao, descricaobreve, restricao, dano, danoPorSegundo," +
+                    "auraBonus, turnoDps, decrescimoDpsPorTurno," +
+                    "qtd, vol, crt, danoFixo, acertoFixo, lvl, subLvl, bonus," +
+                    "qtdFor, qtdCon, qtdDex, qtdInt, qtdCar, qtdMen," +
+                    "qtdRef, qtdEms, qtdMan, qtdMat, qtdTrs, qtdEsp," +
+                    "qtdEsq, qtdVel, qtdTen, qtdAop, qtdMop, qtdCdn," +
+                    "perfurante, gastaAura, trs, mat, man, dps, rebote," +
+                    "somarFor, somarCon, somarDex, somarInt, somarCar, somarMen," +
+                    "somarRef, somarEms, somarMan, somarMat, somarTrs, somarEsp," +
+                    "somarEsq, somarVel, somarTen, somarAop, somarMop, somarCdn," +
+                    "ryu, danoRebote, gastaRyu" +
+                    ") =(" +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?" +
+                    ") WHERE nomeHabilidade = ?";
+
+                pst = execute.prepareStatement(sql);
+
+                pst.setString(1, skill.getNome());
+                pst.setString(2, skill.getArma());
+                pst.setString(3, skill.getDados());
+                pst.setString(4, skill.getProficiencia());
+                pst.setString(5, skill.getDescricao());
+                pst.setString(6, skill.getDescricaoBreve());
+
+                pst.setDouble(7, skill.getRestricao());
+                pst.setInt(8, skill.getDano());
+                pst.setInt(9, skill.getDanoPorSegundo());
+                pst.setInt(10, skill.getAuraBonus());
+                pst.setInt(11, skill.getTurnoDps());
+                pst.setInt(12, skill.getDecrescimoDpsPorTurno());
+                pst.setInt(13, skill.getQtd());
+                pst.setInt(14, skill.getVol());
+                pst.setInt(15, skill.getCrt());
+                pst.setInt(16, skill.getDanoFixo());
+                pst.setInt(17, skill.getAcertoFixo());
+                pst.setInt(18, skill.getLvl());
+                pst.setInt(19, skill.getSubLvl());
+                pst.setInt(20, skill.getBonus());
+
+                pst.setInt(21, skill.getQtdFor());
+                pst.setInt(22, skill.getQtdCon());
+                pst.setInt(23, skill.getQtdDex());
+                pst.setInt(24, skill.getQtdInt());
+                pst.setInt(25, skill.getQtdCar());
+                pst.setInt(26, skill.getQtdMen());
+                pst.setInt(27, skill.getQtdRef());
+                pst.setInt(28, skill.getQtdEms());
+                pst.setInt(29, skill.getQtdMan());
+                pst.setInt(30, skill.getQtdMat());
+                pst.setInt(31, skill.getQtdTrs());
+                pst.setInt(32, skill.getQtdEsp());
+                pst.setInt(33, skill.getQtdEsq());
+                pst.setInt(34, skill.getQtdVel());
+                pst.setInt(35, skill.getQtdTen());
+                pst.setInt(36, skill.getQtdAop());
+                pst.setInt(37, skill.getQtdMop());
+                pst.setInt(38, skill.getQtdCdn());
+
+                pst.setBoolean(39, skill.isPerfurante());
+                pst.setBoolean(40, skill.isGastaAura());
+                pst.setBoolean(41, skill.isTrs());
+                pst.setBoolean(42, skill.isMat());
+                pst.setBoolean(43, skill.isMan());
+                pst.setBoolean(44, skill.isDps());
+                pst.setBoolean(45, skill.isRebote());
+
+                pst.setBoolean(46, skill.isSomarFor());
+                pst.setBoolean(47, skill.isSomarCon());
+                pst.setBoolean(48, skill.isSomarDex());
+                pst.setBoolean(49, skill.isSomarInt());
+                pst.setBoolean(50, skill.isSomarCar());
+                pst.setBoolean(51, skill.isSomarMen());
+                pst.setBoolean(52, skill.isSomarRef());
+                pst.setBoolean(53, skill.isSomarEms());
+                pst.setBoolean(54, skill.isSomarMan());
+                pst.setBoolean(55, skill.isSomarMat());
+                pst.setBoolean(56, skill.isSomarTrs());
+                pst.setBoolean(57, skill.isSomarEsp());
+                pst.setBoolean(58, skill.isSomarEsq());
+                pst.setBoolean(59, skill.isSomarVel());
+                pst.setBoolean(60, skill.isSomarTen());
+                pst.setBoolean(61, skill.isSomarAop());
+                pst.setBoolean(62, skill.isSomarMop());
+                pst.setBoolean(63, skill.isSomarCdn());
+
+                pst.setInt(64, skill.getRyu());
+                pst.setBoolean(65, skill.isDanoRebote());
+                pst.setBoolean(66, skill.isGastaRyu());
+
+                
+                pst.setString(67, ficha.getNick());
+
+                pst.execute();
+
+            } catch (SQLException e) {
+                System.out.println("falha no update - habilidades");
+            }
+        }
+
+        // proficiencias
+        for (String nomePro : ficha.getPro().keySet()) {
+            LvlBonus pro = ficha.getPro().get(nomePro);
+
+            // inserindo proficiencias
+            try {
+                sql = "UPDATE pro SET (" +
+                "nomePro, lvl, lvj, bonus" +
+                ") = (?, ?, ?, ?) " + 
+                "WHERE nomePro = ?";
+                pst = execute.prepareStatement(sql);
+                pst.setString(1, nomePro);
+                pst.setInt(2, pro.getLvl());
+                pst.setInt(3, pro.getLvj());
+                pst.setInt(4, pro.getBonus());
+                
+                pst.setString(5, ficha.getNick());
+
+                pst.execute();
+
+            } catch (SQLException e) {
+                System.out.println(e);
+                System.out.println("nada foi inserido - pro");
+            }
+        }
+
+        // pericias
+        for (String nomePer : ficha.getPer().keySet()) {
+            LvlBonus per = ficha.getPer().get(nomePer);
+
+            // inserindo a pericia
+            try {
+                sql = "UPDATE per SET (" +
+                "nomePer, lvl, lvj, bonus" +
+                ") = (?, ?, ?, ?) " +
+                "WHERE nomePer = ?";
+                pst = execute.prepareStatement(sql);
+                pst.setString(1, nomePer);
+                pst.setInt(2, per.getLvl());
+                pst.setInt(3, per.getLvj());
+                pst.setInt(4, per.getBonus());
+                
+                pst.setString(5, ficha.getNick());
+
+                pst.execute();
+
+            } catch (SQLException e) {
+                System.out.println("nada foi inserido - per");
+            }
+        }
+
+        try {
+            execute.close();
+        } catch (SQLException e) {
+            System.out.println("erro ao fechar");
+            System.out.println(e);
+        }
+
+        return true;
     }
     
 //    public static boolean saveHps() {
@@ -1455,6 +1388,7 @@ public class AlgoritmoPrincipal {
             return true;
         } catch (IOException e) {
             System.out.println(e.toString());
+            System.out.println(fichas);
             return false;
         }
     }

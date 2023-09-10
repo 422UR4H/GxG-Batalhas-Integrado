@@ -6,6 +6,7 @@
 package view.gerador;
 
 import algoritmos.gerador.AlgoritmoPrincipalGerador;
+import algoritmos.batalhas.AlgoritmoPrincipal;
 import ficha_personagem.Ficha;
 import ficha_personagem.Habilidades;
 import ficha_personagem.LvlBonus;
@@ -135,7 +136,7 @@ public class View_nomeFicha extends javax.swing.JDialog {
         // testar se ja existe ficha com esse nome
         // controlando nomes repetidos
         String nomePer = jTextFieldNome.getText().toUpperCase();
-        if (AlgoritmoPrincipalGerador.containsFicha(nomePer)) {
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
             JOptionPane.showMessageDialog(null, "Já existe um personagem com esse nome!",
                     "Error!", JOptionPane.WARNING_MESSAGE);
             
@@ -360,7 +361,7 @@ public class View_nomeFicha extends javax.swing.JDialog {
         }
         
         // inserindo ficha
-        AlgoritmoPrincipalGerador.putFicha(ficha2);
+        AlgoritmoPrincipal.putFicha(ficha2);
         
         // mensagem ao usuario
         JOptionPane.showMessageDialog(null, "Ficha duplicada com sucesso!\nBanco de dados salvo com sucesso!",

@@ -43,4 +43,22 @@ public class ModuloConexao {
             return null;
         }
     }
+    
+    public static Connection postgresConector() {
+        Connection conexao = null;
+        String driver = "org.postgresql.Driver";
+//        String url = "jdbc:postgresql://localhost:5432/dbgxg";
+        String url = "jdbc:postgresql://silly.db.elephantsql.com:5432/kaggpxjq";
+        String user = "kaggpxjq";
+        String password = "n74B-SWQTilRIM-pQwKZO_k5SmMRPfFI";
+        
+        try {
+            Class.forName(driver);
+            conexao = DriverManager.getConnection(url, user, password);
+            return conexao;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
+    }
 }

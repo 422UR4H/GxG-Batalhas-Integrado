@@ -75,27 +75,16 @@
             <file>file:/C:/Users/tiago/Mega/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/ficha/View_editHpMop.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/ficha_personagem/InfoTurno.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/ficha_personagem/Ficha.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/ficha_personagem/Habilidades.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/algoritmos/trainer/AlgoritmoPrincipalTrainer.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/algoritmos/habilidades/AlgoritmoPrincipalHabilidades.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/algoritmos/editor/AlgoritmoPrincipalEditor.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/trainer/View_distribuir.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/gerador/View_breveDescricao.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/algoritmos/batalhas/AlgoritmoPrincipal.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/newfile</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/editor/ViewPrincipalEditor.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/batalhas/ViewPrincipal.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/algoritmos/batalhas/Calculadora.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/ficha_personagem/InfoPerson.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/trainer/ViewPrincipalTrainer.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/gerador/ViewPrincipalGerador.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/ficha_personagem/Classes.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/habilidades/ViewPrincipalHabilidades.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/algoritmos/gerador/AlgoritmoPrincipalGerador.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/batalhas/ViewPosicoes.java</file>
-            <file>file:/C:/Users/tiago/Documents/MEGA/NetBeansProjects/GxG_Batalhas_3_0_Integrado/src/view/gerador/ViewFicha.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/view/trainer/ViewPrincipalTrainer.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/view/habilidades/ViewPrincipalHabilidades.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/view/batalhas/ViewFichaMob.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/view/gerador/ViewFicha.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/view/batalhas/ViewPrincipal.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/ficha_personagem/Classe.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/ficha_personagem/Ficha.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/ficha_personagem/Classes.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/view/batalhas/ViewFichaAntiga.java</file>
+            <file>file:/C:/Users/tiago/Documents/GitHub/GxG-Batalhas-Integrado/src/view/ficha/ViewFicha.java</file>
         </group>
     </open-files>
 </project-private>

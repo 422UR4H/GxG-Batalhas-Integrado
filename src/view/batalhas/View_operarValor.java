@@ -135,8 +135,9 @@ public class View_operarValor extends javax.swing.JDialog {
                             .addComponent(jTextFieldEditarValor)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addComponent(jButtonCancelar)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonCancelar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
         jPanel1Layout.setVerticalGroup(

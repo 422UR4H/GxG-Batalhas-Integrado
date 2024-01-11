@@ -5,6 +5,7 @@
  */
 package algoritmos.trainer;
 
+import algoritmos.batalhas.AlgoritmoPrincipal;
 import algoritmos.dal.ModuloConexao;
 import ficha_personagem.Classes;
 import ficha_personagem.Ficha;
@@ -76,11 +77,18 @@ public class AlgoritmoPrincipalTrainer {
         // carregando fichas e personagens
         //loadPersonagens();
         //loadFichas();
-        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
-        AlgoritmoPrincipalTrainer.loadFichas(folder);
+//        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
+//        AlgoritmoPrincipalTrainer.loadFichas(folder);
+        if (!AlgoritmoPrincipal.loadFichas()) {
+            JOptionPane.showMessageDialog(null, "Fichas não encontradas!",
+                    "Error!", JOptionPane.ERROR_MESSAGE);
+            
+            return false;
+        }
         
 //        loadHps();
 //        loadMops();
+        algoritmos.batalhas.AlgoritmoPrincipal.loadTabelasExp();
         
         CalculadoraTrainer.setEXP_LVL(EXP_LVL);
         CalculadoraTrainer.setEXP_NEN(EXP_NEN);
@@ -449,9 +457,9 @@ public class AlgoritmoPrincipalTrainer {
         }
     }
     
-    public static void replaceFicha(String nome, Ficha ficha) {
-        AlgoritmoPrincipalTrainer.fichas.remove(nome);
-        AlgoritmoPrincipalTrainer.fichas.put(ficha.getNick(), ficha);
+    public static void replaceFicha(Ficha ficha) {
+        AlgoritmoPrincipal.deleteFicha(ficha.getNick());
+        AlgoritmoPrincipal.saveFicha(ficha);
     }
     
 //    public static void replacePer(String nome, Personagem per) {
@@ -526,6 +534,221 @@ public class AlgoritmoPrincipalTrainer {
 //    }
     
     public static boolean loadTabelasExp() {
+        EXP_LVL[0] = 0;
+        EXP_LVL[1] = 0;
+        EXP_LVL[2] = 800;
+        EXP_LVL[3] = 1900;
+        EXP_LVL[4] = 2400;
+        EXP_LVL[5] = 3600;
+        EXP_LVL[6] = 5200;
+        EXP_LVL[7] = 8000;
+        EXP_LVL[8] = 12000;
+        EXP_LVL[9] = 20000;
+        EXP_LVL[10] = 40000;
+        EXP_LVL[11] = 60000;
+        EXP_LVL[12] = 68000;
+        EXP_LVL[13] = 72000;
+        EXP_LVL[14] = 74800;
+        EXP_LVL[15] = 76400;
+        EXP_LVL[16] = 77600;
+        EXP_LVL[17] = 78400;
+        EXP_LVL[18] = 79200;
+        EXP_LVL[19] = 79600;
+        EXP_LVL[20] = 80000;
+        
+        EXP_NEN[0] = 0;
+        EXP_NEN[1] = 100;
+        EXP_NEN[2] = 100;
+        EXP_NEN[3] = 100;
+        EXP_NEN[4] = 105;
+        EXP_NEN[5] = 110;
+        EXP_NEN[6] = 115;
+        EXP_NEN[7] = 120;
+        EXP_NEN[8] = 125;
+        EXP_NEN[9] = 130;
+        EXP_NEN[10] = 135;
+        EXP_NEN[11] = 140;
+        EXP_NEN[12] = 150;
+        EXP_NEN[13] = 160;
+        EXP_NEN[14] = 170;
+        EXP_NEN[15] = 180;
+        EXP_NEN[16] = 190;
+        EXP_NEN[17] = 200;
+        EXP_NEN[18] = 210;
+        EXP_NEN[19] = 220;
+        EXP_NEN[20] = 230;
+        EXP_NEN[21] = 245;
+        EXP_NEN[22] = 260;
+        EXP_NEN[23] = 275;
+        EXP_NEN[23] = 290;
+        EXP_NEN[25] = 305;
+        EXP_NEN[26] = 320;
+        EXP_NEN[27] = 340;
+        EXP_NEN[28] = 360;
+        EXP_NEN[29] = 380;
+        EXP_NEN[30] = 400;
+        EXP_NEN[31] = 430;
+        EXP_NEN[32] = 460;
+        EXP_NEN[33] = 490;
+        EXP_NEN[34] = 520;
+        EXP_NEN[35] = 550;
+        EXP_NEN[36] = 600;
+        EXP_NEN[37] = 650;
+        EXP_NEN[38] = 700;
+        EXP_NEN[39] = 750;
+        EXP_NEN[40] = 800;
+        EXP_NEN[41] = 900;
+        EXP_NEN[42] = 1000;
+        EXP_NEN[43] = 1100;
+        EXP_NEN[44] = 1200;
+        EXP_NEN[45] = 1300;
+        EXP_NEN[46] = 1400;
+        EXP_NEN[47] = 1500;
+        EXP_NEN[48] = 1600;
+        EXP_NEN[49] = 1700;
+        EXP_NEN[50] = 1800;
+        EXP_NEN[51] = 1900;
+        EXP_NEN[52] = 2000;
+        EXP_NEN[53] = 2100;
+        EXP_NEN[54] = 2200;
+        EXP_NEN[55] = 2300;
+        EXP_NEN[56] = 2350;
+        EXP_NEN[57] = 2400;
+        EXP_NEN[58] = 2450;
+        EXP_NEN[59] = 2500;
+        EXP_NEN[60] = 2550;
+        EXP_NEN[61] = 2580;
+        EXP_NEN[62] = 2610;
+        EXP_NEN[63] = 2640;
+        EXP_NEN[64] = 2670;
+        EXP_NEN[65] = 2700;
+        EXP_NEN[66] = 2720;
+        EXP_NEN[67] = 2740;
+        EXP_NEN[68] = 2760;
+        EXP_NEN[69] = 2780;
+        EXP_NEN[70] = 2800;
+        EXP_NEN[71] = 2815;
+        EXP_NEN[72] = 2830;
+        EXP_NEN[73] = 2845;
+        EXP_NEN[74] = 2860;
+        EXP_NEN[75] = 2875;
+        EXP_NEN[76] = 2890;
+        EXP_NEN[77] = 2900;
+        EXP_NEN[78] = 2910;
+        EXP_NEN[79] = 2920;
+        EXP_NEN[80] = 2930;
+        EXP_NEN[81] = 2940;
+        EXP_NEN[82] = 2950;
+        EXP_NEN[83] = 2960;
+        EXP_NEN[84] = 2970;
+        EXP_NEN[85] = 2980;
+        EXP_NEN[86] = 2985;
+        EXP_NEN[87] = 2990;
+        EXP_NEN[88] = 2995;
+        EXP_NEN[89] = 3000;
+        EXP_NEN[90] = 3000;
+       
+        LVL_NEN[0] = 0;
+        LVL_NEN[1] = 40;
+        LVL_NEN[2] = 80;
+        LVL_NEN[3] = 120;
+        LVL_NEN[4] = 160;
+        LVL_NEN[5] = 200;
+        LVL_NEN[6] = 240;
+        LVL_NEN[7] = 280;
+        LVL_NEN[8] = 320;
+        LVL_NEN[9] = 360;
+        LVL_NEN[10] = 400;
+        LVL_NEN[11] = 440;
+        LVL_NEN[12] = 480;
+        LVL_NEN[13] = 520;
+        LVL_NEN[14] = 560;
+        LVL_NEN[15] = 600;
+        LVL_NEN[16] = 660;
+        LVL_NEN[17] = 720;
+        LVL_NEN[18] = 780;
+        LVL_NEN[19] = 840;
+        LVL_NEN[20] = 900;
+        LVL_NEN[21] = 980;
+        LVL_NEN[22] = 1060;
+        LVL_NEN[23] = 1140;
+        LVL_NEN[24] = 1220;
+        LVL_NEN[25] = 1300;
+        LVL_NEN[26] = 1440;
+        LVL_NEN[27] = 1580;
+        LVL_NEN[28] = 1720;
+        LVL_NEN[29] = 1860;
+        LVL_NEN[30] = 2000;
+        LVL_NEN[31] = 2200;
+        LVL_NEN[32] = 2400;
+        LVL_NEN[33] = 2600;
+        LVL_NEN[34] = 2800;
+        LVL_NEN[35] = 3000;
+        LVL_NEN[36] = 3400;
+        LVL_NEN[37] = 3800;
+        LVL_NEN[38] = 4200;
+        LVL_NEN[39] = 4600;
+        LVL_NEN[40] = 5000;
+        LVL_NEN[41] = 6000;
+        LVL_NEN[42] = 7000;
+        LVL_NEN[43] = 8000;
+        LVL_NEN[44] = 9000;
+        LVL_NEN[45] = 10000;
+        LVL_NEN[46] = 11000;
+        LVL_NEN[47] = 12000;
+        LVL_NEN[48] = 13000;
+        LVL_NEN[49] = 14000;
+        LVL_NEN[50] = 15000;
+        LVL_NEN[51] = 15400;
+        LVL_NEN[52] = 15800;
+        LVL_NEN[53] = 16200;
+        LVL_NEN[54] = 16600;
+        LVL_NEN[55] = 17000;
+        LVL_NEN[56] = 17200;
+        LVL_NEN[57] = 17400;
+        LVL_NEN[58] = 17600;
+        LVL_NEN[59] = 17800;
+        LVL_NEN[60] = 18000;
+        LVL_NEN[61] = 18140;
+        LVL_NEN[62] = 18280;
+        LVL_NEN[63] = 18420;
+        LVL_NEN[64] = 18560;
+        LVL_NEN[65] = 18700;
+        LVL_NEN[66] = 18780;
+        LVL_NEN[67] = 18860;
+        LVL_NEN[68] = 18940;
+        LVL_NEN[69] = 19020;
+        LVL_NEN[70] = 19100;
+        LVL_NEN[71] = 19160;
+        LVL_NEN[72] = 19220;
+        LVL_NEN[73] = 19280;
+        LVL_NEN[74] = 19340;
+        LVL_NEN[75] = 19400;
+        LVL_NEN[76] = 19440;
+        LVL_NEN[77] = 19480;
+        LVL_NEN[78] = 19520;
+        LVL_NEN[79] = 19560;
+        LVL_NEN[80] = 19600;
+        LVL_NEN[81] = 19640;
+        LVL_NEN[82] = 19680;
+        LVL_NEN[83] = 19720;
+        LVL_NEN[84] = 19760;
+        LVL_NEN[85] = 19800;
+        LVL_NEN[86] = 19820;
+        LVL_NEN[87] = 19840;
+        LVL_NEN[88] = 19860;
+        LVL_NEN[89] = 19880;
+        LVL_NEN[90] = 19900;
+        LVL_NEN[91] = 19920;
+        LVL_NEN[92] = 19940;
+        LVL_NEN[93] = 19960;
+        LVL_NEN[94] = 19980;
+        LVL_NEN[95] = 20000;
+        
+        return true;
+    }
+    
+    public static boolean loadTabelasExpLocais() {
         try { try ( // lendo exp de lvl
                 FileReader arq = new FileReader("src\\dataBase\\exp_lvl.txt")) {
                 BufferedReader lerArq = new BufferedReader(arq);

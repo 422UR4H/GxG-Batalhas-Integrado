@@ -5,6 +5,7 @@
  */
 package view.editor;
 
+import algoritmos.batalhas.AlgoritmoPrincipal;
 import algoritmos.editor.AlgoritmoPrincipalEditor;
 //import com.sun.glass.events.KeyEvent;
 import ficha_personagem.Ficha;
@@ -33,8 +34,12 @@ public class ViewPrincipalEditor extends javax.swing.JFrame {
         
         // MEU CODIGO
         
-        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
-        AlgoritmoPrincipalEditor.loadFichas(folder);
+//        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
+//        AlgoritmoPrincipalEditor.loadFichas(folder);
+        if (!AlgoritmoPrincipal.loadFichas()) {
+            JOptionPane.showMessageDialog(null, "Fichas não encontradas!",
+                    "Error!", JOptionPane.ERROR_MESSAGE);
+        }
         
         // FIM DO MEU CODIGO
     }

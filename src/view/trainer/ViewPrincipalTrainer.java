@@ -7,6 +7,7 @@ package view.trainer;
 
 import algoritmos.gerador.AlgoritmoPrincipalGerador;
 import algoritmos.trainer.AlgoritmoPrincipalTrainer;
+import algoritmos.batalhas.AlgoritmoPrincipal;
 import algoritmos.trainer.CalculadoraTrainer;
 import ficha_personagem.Ficha;
 import ficha_personagem.LvlBonus;
@@ -2125,8 +2126,8 @@ public class ViewPrincipalTrainer extends javax.swing.JFrame {
         // retorna true se atacante for um nome valido
         Ficha ficha;
         String nomePer = jTextFieldNome.getText().toUpperCase();
-        if (AlgoritmoPrincipalTrainer.containsFicha(nomePer)) {
-            ficha = AlgoritmoPrincipalTrainer.getFicha(nomePer);
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
+            ficha = AlgoritmoPrincipal.getFicha(nomePer);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome",
                     "Error!", JOptionPane.WARNING_MESSAGE);
@@ -2345,12 +2346,12 @@ public class ViewPrincipalTrainer extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         // atualizando banco de dados
-        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
-        try {
-            AlgoritmoPrincipalTrainer.loadFichas(folder);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewPrincipalTrainer.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
+//        try {
+//            AlgoritmoPrincipalTrainer.loadFichas(folder);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(ViewPrincipalTrainer.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
         
         Ficha ficha = AlgoritmoPrincipalTrainer.getFicha();
@@ -2363,13 +2364,9 @@ public class ViewPrincipalTrainer extends javax.swing.JFrame {
         // recalculando hp
         AlgoritmoPrincipalTrainer.atualizaFicha(ficha);
         // inserindo ficha upada
-        AlgoritmoPrincipalTrainer.replaceFicha(AlgoritmoPrincipalTrainer.getNome(), ficha);
-        try {
-            // salvando tudo
-            AlgoritmoPrincipalTrainer.saveFicha(ficha);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewPrincipalTrainer.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        AlgoritmoPrincipalTrainer.replaceFicha(ficha);
+        // salvando tudo
+        AlgoritmoPrincipal.saveFicha(ficha);
         // zerando dias restantes
         AlgoritmoPrincipalTrainer.setDiasRestantes(0);
         // mensagem ao usuario
@@ -2386,11 +2383,11 @@ public class ViewPrincipalTrainer extends javax.swing.JFrame {
         AlgoritmoPrincipalTrainer.reset();
         
         // atualizando gerador
-        try {
-            AlgoritmoPrincipalGerador.loadFichas(folder);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewPrincipalTrainer.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            AlgoritmoPrincipalGerador.loadFichas(folder);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(ViewPrincipalTrainer.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jLabelPerNome3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPerNome3MouseEntered

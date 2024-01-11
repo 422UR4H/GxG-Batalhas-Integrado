@@ -1480,7 +1480,8 @@ public class AlgoritmoPrincipal {
     
     public static boolean loadTabelasExp() {
         try { try ( // lendo exp de lvl
-                FileReader arq = new FileReader("src\\dataBase\\exp_lvl.txt")) {
+//                FileReader arq = new FileReader("src\\dataBase\\exp_lvl.txt")) {
+                FileReader arq = new FileReader("C:\\dataBase\\exp_lvl.txt")) {
                 BufferedReader lerArq = new BufferedReader(arq);
 
                 // setando o valor 0 na posição 0 do vetor, que corresponde ao nivel 0
@@ -1510,7 +1511,8 @@ public class AlgoritmoPrincipal {
         }
         
         try { try ( // lendo exp de nen
-                FileReader arq = new FileReader("src\\dataBase\\exp_nen.txt")) {
+//                FileReader arq = new FileReader("src\\dataBase\\exp_nen.txt")) {
+                FileReader arq = new FileReader("C:\\dataBase\\exp_nen.txt")) {
                 BufferedReader lerArq = new BufferedReader(arq);
 
                 // setando o valor 0 na posição 0 do vetor, que corresponde ao nivel 0
@@ -1537,7 +1539,8 @@ public class AlgoritmoPrincipal {
         }
         
         try { try ( // lendo exp de lvl nen
-                FileReader arq = new FileReader("src\\dataBase\\lvl_nen.txt")) {
+//                FileReader arq = new FileReader("src\\dataBase\\lvl_nen.txt")) {
+                FileReader arq = new FileReader("C:\\dataBase\\lvl_nen.txt")) {
                 BufferedReader lerArq = new BufferedReader(arq);
 
                 // setando o valor 0 na posição 0 do vetor, que corresponde ao nivel 0

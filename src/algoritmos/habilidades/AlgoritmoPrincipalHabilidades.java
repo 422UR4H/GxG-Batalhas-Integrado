@@ -5,6 +5,7 @@
  */
 package algoritmos.habilidades;
 
+import algoritmos.batalhas.AlgoritmoPrincipal;
 import algoritmos.dal.ModuloConexao;
 import ficha_personagem.Classes;
 import ficha_personagem.Ficha;
@@ -53,8 +54,14 @@ public class AlgoritmoPrincipalHabilidades {
         
         // carregando fichas e personagens
 //        loadFichas();
-        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
-        AlgoritmoPrincipalHabilidades.loadFichas(folder);
+//        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
+//        AlgoritmoPrincipalHabilidades.loadFichas(folder);
+        if (!AlgoritmoPrincipal.loadFichas()) {
+            JOptionPane.showMessageDialog(null, "Fichas não encontradas!",
+                    "Error!", JOptionPane.ERROR_MESSAGE);
+            
+            return;
+        }
 //        loadAtkPad();
 //        loadDefPad();
         

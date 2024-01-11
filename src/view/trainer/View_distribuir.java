@@ -7,6 +7,7 @@ package view.trainer;
 
 import algoritmos.habilidades.CalculadoraHabilidades;
 import algoritmos.trainer.AlgoritmoPrincipalTrainer;
+import algoritmos.batalhas.AlgoritmoPrincipal;
 import algoritmos.trainer.CalculadoraTrainer;
 import ficha_personagem.Classes;
 import ficha_personagem.Ficha;
@@ -1291,11 +1292,7 @@ public class View_distribuir extends javax.swing.JDialog {
         }
 
         // salvando a ficha
-        try {
-            AlgoritmoPrincipalTrainer.saveFicha(ficha);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(View_distribuir.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        AlgoritmoPrincipal.saveFicha(ficha);
 
         // mensagem final
         JOptionPane.showMessageDialog(null, "Ficha salva com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);

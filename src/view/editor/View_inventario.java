@@ -120,7 +120,7 @@ public class View_inventario extends javax.swing.JDialog {
         
         // SALVANDO O INVENTARIO
         
-        Connection conexao = ModuloConexao.conector();
+        Connection conexao = ModuloConexao.postgresConector();
         String sql = "update ficha set inventario = ? where nick = ?";
         PreparedStatement pst = null;
         

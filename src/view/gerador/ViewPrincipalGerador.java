@@ -3121,11 +3121,11 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
         switch (AlgoritmoPrincipalGerador.getjButton()) {
             case 0:
                 // inserindo nova ficha e novo personagem
-                AlgoritmoPrincipalGerador.putFicha(ficha);
+                AlgoritmoPrincipal.putFicha(ficha);
                 break;
             case 2:
                 // substituindo ficha antiga pela editada
-                AlgoritmoPrincipalGerador.replaceFicha(AlgoritmoPrincipalGerador.getNome(), ficha);
+                AlgoritmoPrincipal.replaceFicha(AlgoritmoPrincipalGerador.getNome(), ficha);
                 break;
         }
         
@@ -3152,8 +3152,7 @@ public class ViewPrincipalGerador extends javax.swing.JFrame {
                     return;
                 }
         }
-        
-        
+        AlgoritmoPrincipal.loadFichas(); 
         limparFicha();
         
         JOptionPane.showMessageDialog(null, "Ficha salva com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);

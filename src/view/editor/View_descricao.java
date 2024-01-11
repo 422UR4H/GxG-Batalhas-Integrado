@@ -119,7 +119,7 @@ public class View_descricao extends javax.swing.JDialog {
         
         // SALVANDO A DESCRICAO
         
-        Connection conexao = ModuloConexao.conector();
+        Connection conexao = ModuloConexao.postgresConector();
         String sql = "update ficha set descricao = ? where nick = ?";
         PreparedStatement pst = null;
         

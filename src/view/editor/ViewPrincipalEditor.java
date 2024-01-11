@@ -759,6 +759,7 @@ public class ViewPrincipalEditor extends javax.swing.JFrame {
 //        } else {
 //            AlgoritmoPrincipalEditor.saveFicha(ficha);
 //        }
+        AlgoritmoPrincipal.deleteFicha(ficha.getNick());
         AlgoritmoPrincipal.saveFicha(ficha);
         
         // mensagem ao usuario

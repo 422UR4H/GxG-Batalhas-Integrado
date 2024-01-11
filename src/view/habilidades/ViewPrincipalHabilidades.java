@@ -5,7 +5,7 @@
  */
 package view.habilidades;
 
-import algoritmos.gerador.AlgoritmoPrincipalGerador;
+import algoritmos.batalhas.AlgoritmoPrincipal;
 import algoritmos.habilidades.AlgoritmoPrincipalHabilidades;
 import algoritmos.habilidades.CalculadoraHabilidades;
 import ficha_personagem.Armas;
@@ -1786,8 +1786,8 @@ public class ViewPrincipalHabilidades extends javax.swing.JFrame {
         Ficha ficha;
         String nomePer = jTextFieldNome.getText().toUpperCase();
         // retorna true se o personagem tiver um nome valido
-        if (AlgoritmoPrincipalHabilidades.containsFicha(nomePer)) {
-            ficha = AlgoritmoPrincipalHabilidades.getFicha(nomePer);
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
+            ficha = AlgoritmoPrincipal.getFicha(nomePer);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome",
                     "Error!", JOptionPane.WARNING_MESSAGE);
@@ -2320,17 +2320,19 @@ public class ViewPrincipalHabilidades extends javax.swing.JFrame {
         }
         
         // salvando ficha
-        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
-        if (AlgoritmoPrincipalHabilidades.saveFicha(folder)) {
-            JOptionPane.showMessageDialog(null, "Habilidade salva com sucesso!",
-                    "Success!", JOptionPane.INFORMATION_MESSAGE);
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "A ficha não foi salva!", "Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            
-            return;
-        }
+//        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
+//        if (AlgoritmoPrincipalHabilidades.saveFicha(folder)) {
+//            JOptionPane.showMessageDialog(null, "Habilidade salva com sucesso!",
+//                    "Success!", JOptionPane.INFORMATION_MESSAGE);
+//            
+//        } else {
+//            JOptionPane.showMessageDialog(null, "A ficha não foi salva!", "Error!",
+//                    JOptionPane.ERROR_MESSAGE);
+//            
+//            return;
+//        }
+        AlgoritmoPrincipal.deleteFicha(AlgoritmoPrincipalHabilidades.getFicha().getNick());
+        AlgoritmoPrincipal.saveFicha(AlgoritmoPrincipalHabilidades.getFicha());
         
         
         // limpando jPanel
@@ -2352,8 +2354,8 @@ public class ViewPrincipalHabilidades extends javax.swing.JFrame {
         // travando comboBoxes
         AlgoritmoPrincipalHabilidades.setComboBoxLocked(true);
         
-        // atualizando gerador
-        AlgoritmoPrincipalHabilidades.loadFichas(folder);
+        // atualizando
+        AlgoritmoPrincipal.loadFichas();
     }
     
     private void jComboBoxHabilidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHabilidadesActionPerformed
@@ -2868,7 +2870,7 @@ public class ViewPrincipalHabilidades extends javax.swing.JFrame {
             jLabelDadoElemento.setText("0");
             jLabelDanoElemental.setText("0");
         } else {
-            Armas arma = CalculadoraHabilidades.getArma(nome);
+            Armas arma = CalculadoraHabilidades.getElemento(nome);
 
             jLabelDadoElemento.setText(arma.getDados());
             jLabelDanoElemental.setText("+" + String.valueOf(arma.getDano()));

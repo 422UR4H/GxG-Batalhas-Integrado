@@ -662,8 +662,8 @@ public class ViewPrincipalEditor extends javax.swing.JFrame {
         // retorna true se atacante for um nome valido
         Ficha ficha;
         String nomePer = jTextFieldNick.getText().toUpperCase();
-        if (AlgoritmoPrincipalEditor.containsPersonagem(nomePer)) {
-            ficha = AlgoritmoPrincipalEditor.getFicha(nomePer);
+        if (AlgoritmoPrincipal.containsPersonagem(nomePer)) {
+            ficha = AlgoritmoPrincipal.getFicha(nomePer);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nome",
                     "Error!", JOptionPane.WARNING_MESSAGE);
@@ -716,7 +716,7 @@ public class ViewPrincipalEditor extends javax.swing.JFrame {
         String nick = jTextFieldNovoNick.getText().toUpperCase();
         // testando se o possível novo nome está disponível
         if (!jTextFieldNovoNick.getText().toUpperCase().equals(jTextFieldNick.getText().toUpperCase())) {
-            if (AlgoritmoPrincipalEditor.containsPersonagem(nick) || nick.equals("NULL") || nick.equals("NOVO")) {
+            if (AlgoritmoPrincipal.containsPersonagem(nick) || nick.equals("NULL") || nick.equals("NOVO")) {
 
                 JOptionPane.showMessageDialog(null, "Nome indisponível!", "Error!", JOptionPane.WARNING_MESSAGE);
                 jTextFieldNovoNick.selectAll();
@@ -753,17 +753,13 @@ public class ViewPrincipalEditor extends javax.swing.JFrame {
         AlgoritmoPrincipalEditor.putFicha(ficha);
         
         
-            // salvando ficha
+        // salvando ficha
 //        if (mudouNick) {
 //            AlgoritmoPrincipalEditor.saveFichas();
 //        } else {
 //            AlgoritmoPrincipalEditor.saveFicha(ficha);
 //        }
-        try {
-            AlgoritmoPrincipalEditor.saveFicha(ficha);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewPrincipalEditor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        AlgoritmoPrincipal.saveFicha(ficha);
         
         // mensagem ao usuario
         JOptionPane.showMessageDialog(null, "Ficha Salva!", "Success!", JOptionPane.INFORMATION_MESSAGE);

@@ -847,6 +847,7 @@ public class AlgoritmoPrincipal {
                 pst.setBoolean(60, skill.isSomarVel());
                 pst.setBoolean(61, skill.isSomarTen());
                 pst.setBoolean(62, skill.isSomarAop());
+                pst.setBoolean(63, skill.isSomarMop());
                 pst.setBoolean(64, skill.isSomarCdn());
 
                 pst.setInt(65, skill.getRyu());
@@ -856,6 +857,7 @@ public class AlgoritmoPrincipal {
                 pst.execute();
 
             } catch (SQLException e) {
+                System.err.println(e);
                 System.out.println("falha no insert - habilidades");
             }
         }

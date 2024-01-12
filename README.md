@@ -1,4 +1,4 @@
-# GxG Batalhas Integrado
+# GxG Battles: Integrated
 
 A Desktop Java Application built for manage gameplay on the Hunter X Hunter RPG System.
 
@@ -19,8 +19,6 @@ And, therefore, I am creating a web application as gratitude to this project tha
 ```url
 https://mega.nz/file/G0wFkCgQ#WdpVOMXqvipGcH_5YzTAXG0TYt2sdAIdCVV2rvBbKXI
 ```
-
-<br />
 
 ## Quick start
 

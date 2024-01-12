@@ -1,3 +1,5 @@
+[![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/422UR4H/GxG-Batalhas-Integrado/blob/main/README.pt-br.md)
+
 # GxG Battles: Integrated
 
 A Desktop Java Application built for manage gameplay on the Hunter X Hunter RPG System.

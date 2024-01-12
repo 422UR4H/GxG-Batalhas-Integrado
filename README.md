@@ -18,7 +18,7 @@ And, therefore, I am creating a web application as gratitude to this project tha
 ### Software Download Link:
 
 ```url
-https://mega.nz/file/G0wFkCgQ#WdpVOMXqvipGcH_5YzTAXG0TYt2sdAIdCVV2rvBbKXI
+https://mega.nz/file/6pQgECpJ#WbzxHgVh6SJ0NiMZx4lIrOnWhpxXxhF3aOvqe5P-zgI
 ```
 
 ## Quick start
@@ -51,6 +51,16 @@ Click "Calcular"
 In the last section are the character's data and the points to distribute if he starts beyond level 1.<br />
 Distribute correctly until the points are zero and save the sheet/character.<br />
 Now you can go back to the Battles Screen and check the character created directly in this manager!
+
+### Generator by exp/lvl Nen:
+
+It is also possible to create characters by determining a Nen level or experience limit, allowing the distribution of Nen attribute points up to this determined limit.<br />
+This feature came to allow the master to determine a certain initial Nen level for the characters of a campaign or match, making it possible for them to distribute their points and start by knowing Nen and having trained him.<br />
+
+![AnimaçãoGerador2](https://github.com/422UR4H/GxG-Batalhas-Integrado/assets/36780789/9cf6d36f-5dba-4c40-9a58-92ebe3b35d8c)
+
+It is also possible to evolve a character through this screen if, for example, the master wants to give the characters a training season, giving them Nen experience points and allowing them to distribute the evolved levels.<br />
+Write the character's nickname, click on "Arquivo" -> "Treinar Personagem" and proceed in a similar way with this training.
 
 ### Trainer
 
@@ -89,4 +99,11 @@ You can also define the amount of ryu generally used with this skill (be careful
 Finally, click "Salvar" to save the new skill.<br />
 Now you can go back to the battles screen and check the character with his created skill directly in this manager!<br />
 
+### Character Sheet
+
+It is also possible to view the character's profile from various parts of the application...
+
+![AnimaçãoFicha](https://github.com/422UR4H/GxG-Batalhas-Integrado/assets/36780789/b17c27bc-1699-43f0-bc16-fd12c897c47b)
+
+<br />
 Note: This program was not created with data security in mind and does not have as many validations as it should, use it with care <3

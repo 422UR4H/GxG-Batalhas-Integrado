@@ -8,10 +8,11 @@ package view.gerador;
 import algoritmos.gerador.AlgoritmoPrincipalGerador;
 import algoritmos.gerador.CalculadoraGerador;
 import algoritmos.habilidades.CalculadoraHabilidades;
+import algoritmos.batalhas.AlgoritmoPrincipal;
 import ficha_personagem.Classe;
 import ficha_personagem.Classes;
 import ficha_personagem.Ficha;
-import java.io.File;
+//import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -2991,7 +2992,7 @@ public class ViewFicha extends javax.swing.JFrame {
     private void calcular() {
         // controlando nomes repetidos
         String nomePer = jTextFieldNick.getText().toUpperCase();
-        if (AlgoritmoPrincipalGerador.containsFicha(nomePer)) {
+        if (AlgoritmoPrincipal.containsFicha(nomePer)) {
             JOptionPane.showMessageDialog(null, "Já existe um personagem com esse nome!",
                     "Error!", JOptionPane.WARNING_MESSAGE);
             return;
@@ -4317,12 +4318,12 @@ public class ViewFicha extends javax.swing.JFrame {
         ficha.setModCdn();
         
         // atualizando dados
-        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
-        try {
-            AlgoritmoPrincipalGerador.loadFichas(folder);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewFicha.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        File folder = new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS());
+//        try {
+//            AlgoritmoPrincipalGerador.loadFichas(folder);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(ViewFicha.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
         
         // ATUALIZANDO HABILIDADES
@@ -4334,12 +4335,15 @@ public class ViewFicha extends javax.swing.JFrame {
         }
         
         // salvando ficha
-        AlgoritmoPrincipalGerador.putFicha(ficha);
-        try {
-            AlgoritmoPrincipalGerador.saveFicha(new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS()));
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewFicha.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        AlgoritmoPrincipalGerador.putFicha(ficha);
+//        try {
+//            AlgoritmoPrincipalGerador.saveFicha(new File(algoritmos.batalhas.AlgoritmoPrincipal.getDIR_FICHAS()));
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(ViewFicha.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        AlgoritmoPrincipal.loadFichas();
+        AlgoritmoPrincipal.saveFicha(ficha);
+        AlgoritmoPrincipal.putFicha(ficha);
         
 //        limparFicha();
         jButtonSalvar.setEnabled(false);
@@ -4956,8 +4960,8 @@ public class ViewFicha extends javax.swing.JFrame {
         // lendo o nick do personagem
         String nick = jTextFieldNick.getText().toUpperCase();
         // retorna true se o nick for valido
-        if (AlgoritmoPrincipalGerador.containsFicha(nick)) {
-            ficha = AlgoritmoPrincipalGerador.getFicha(nick);
+        if (AlgoritmoPrincipal.containsFicha(nick)) {
+            ficha = AlgoritmoPrincipal.getFicha(nick);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi encontrado um personagem com esse nick",
                     "Error!", JOptionPane.WARNING_MESSAGE);
